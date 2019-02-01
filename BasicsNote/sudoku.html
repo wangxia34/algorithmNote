@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="primary/array/isValidSudoku.js"></script>
+    <style>
+        ul, li {
+            list-style:none;
+            margin: 0;
+            padding: 0;
+        }
+        .ul {
+            width: 450px;
+            height: 450px;
+            box-sizing: border-box;
+        }
+        .li {
+            width: 100%;
+            height: 50px;
+            box-sizing: border-box;
+        }
+        .subUl {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .subLi {
+            width: 50px;
+            height: 100%;
+            box-sizing: border-box;
+            display: inline-block;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <ul id="sudoku_div" class="ul">
+
+    </ul>
+
+</body>
+</html>
+<script>
+    let sudokuUl = document.getElementById("sudoku_div");
+
+    for (let i = 0; i < 9; i++) {
+        let lis = document.createElement("li");
+        lis.className = "li";
+        let ul = document.createElement("ul");
+        ul.className = "subUl";
+
+        for (let j = 0; j < 9; j++) {
+            let li = document.createElement("li");
+            li.className = "subLi";
+            ul.appendChild(li);
+        }
+        lis.appendChild(ul);
+        sudokuUl.appendChild(lis);
+    }
+
+</script>
