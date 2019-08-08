@@ -38,7 +38,8 @@ window.onload = function (ev) {
                 setArr.add(arr[i]);
             }
         }
-        for (let num of setArr) return num;
+        let num;
+        for (num of setArr) return num;
     }
     
     function singleNumber4(arr) {
