@@ -15,13 +15,13 @@ window.onload = function (ev) {
         return result ? result.index : -1;
     }
     
-    function strStr(haystack, needle) {
+    function strStr2(haystack, needle) {
         let reg = new RegExp(needle);
         // 返回第一个匹配的子串的起始位置
         return haystack.search(reg);
     }
     
-    function strStr2(haystack, needle) {
+    function strStr3(haystack, needle) {
         if (needle === '') return 0;
         for (let i = 0; i <= haystack.length - needle.length; i++) {
             for (let j = 0; j < needle.length; j++) {
@@ -36,6 +36,15 @@ window.onload = function (ev) {
         return -1;
     }
     
+    function strStr(haystack, needle) {
+        if (needle === "") return 0;
+        for (let i = 0; i < haystack.length; i++) {
+            if (haystack[i] === needle[0]) {
+                if (haystack.substring(i, i + needle.length) === needle) return i;
+            }
+        }
+        return -1
+    }
     
     
     console.log(haystack1, needle1, strStr(haystack1, needle1));

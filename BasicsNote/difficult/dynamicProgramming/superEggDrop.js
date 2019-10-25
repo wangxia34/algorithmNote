@@ -138,7 +138,7 @@ window.onload = function (ev) {
         return dp[N];
     }
     
-    function superEggDrop(K, N) {
+    function superEggDrop5(K, N) {
         let dp = [];
         for (let i = 0; i < K + 1; i++) {
             dp.push([]);
@@ -154,6 +154,19 @@ window.onload = function (ev) {
             }
         }
         return N;
+    }
+    
+    function superEggDrop(K, N) {
+        if(K===1)return N;
+        let m=0;
+        let dp = new Array(K+1).fill(0);
+        while(dp[K]<N){
+            m+=1;
+            for(let k=K;k>0;k--){
+                dp[k]=dp[k-1]+dp[k]+1
+            }
+        }
+        return m;
     }
     
     
