@@ -35,7 +35,7 @@ window.onload = function (ev) {
     }
     
     
-    function twoSum(nums, target) {
+    function twoSum2(nums, target) {
         const comp = {};
         for (let i = 0; i < nums.length; i++) {
             if (comp[nums[i]] >= 0) {
@@ -44,6 +44,29 @@ window.onload = function (ev) {
             comp[target - nums[i]] = i
         }
     }
+    
+    var twoSum3 = function(nums, target) {
+        let res = {}
+        for (let i = 0; i < nums.length; i++) { // 每个人登记自己想要配对的人，让主持人记住
+            res[target - nums[i]] = nums[i]
+        }
+        for (let j = 0; j < nums.length; j++) { // 每个人再次报数的时候，主持人看一下名单里有没有他
+            if (res[nums[j]] !== undefined) {
+                return [nums[j], res[nums[j]]]
+            }
+        }
+    };
+    
+    var twoSum = function(nums, target) {
+        let res = {}
+        for (let i = 0; i < nums.length; i++) { // 每个人报出自己想要配对的人
+            if (res[nums[i]] !== undefined) { // 如果有人被登记过
+                return [nums[i], res[nums[i]]] // 就是他
+            } else {  // 否则
+                res[target - nums[i]] = nums[i] // 主持人记住他的需求
+            }
+        }
+    };
     
     console.log(twoSum(nums1, target1), nums1, target1);
     
