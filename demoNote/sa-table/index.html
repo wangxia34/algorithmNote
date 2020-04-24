@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/SAPanel.css">
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/colResizable-1.6.js"></script>
+    <script src="js/SATable.js"></script>
+</head>
+<body>
+<div id="main_content">
+    <div class="content-panel table-content">
+        <div class="table-nav">
+            <div class="table-nav-item">详情</div>
+        </div>
+        <div class="table-tool">
+            <span class="table-tool-right">
+                <span class="search-input-item">
+                    <input class="search-input" id="searchTable" placeholder="搜索关键字">
+                    <span class="icon iconfont icon-search search-input-icon" id="searchTableIcon"></span>
+                </span>
+            </span>
+        </div>
+        <div class="table-panel" id="details"></div>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+    let detailTablePanel = null;
+    let detailOption = {
+        fatherId: "details",
+        name: "details",
+        // 设置最多展示多少行
+        lineNum: 15,
+        tdHeight: "s", // 自主设置td标签的高度
+        // 设置table表格 列可拖动功能
+        colResizable: true,
+        scrollConfig: {
+            scrollDom: "main_content",
+            scrollNumber: 30,
+            scrollHeight: 300
+        },
+        // 是否存在翻页
+        hasPage: {
+            show: true,
+            isUpdateLan: true,
+            hasLineNum: true,
+            lineNumList: [10, 15, 20, 50, 100, 250, 1000, 5000],
+        },
+        render: {
+            "@timestamp": {
+                render: function (text) {
+                    let now = new Date(parseInt(text) * 1000);
+                    return now.toLocaleString('chinese',{hour12:false}).replace(/\//g, '-')
+                }
+            },
+            sip: {
+                render: function (text) {
+                    let name = getAssetNameOrIp(text);
+                    let department = getDepartment(text);
+                    if (department) {
+                        return `<span>${name}(${department})</span>`
+                    } else {
+                        return `<span>${text}</span>`
+                    }
+                },
+                filter: function (text) {
+                    let name = getAssetName(text);
+                    let department = getDepartment(text);
+                    if (department) {
+                        return text + name + department
+                    } else {
+                        return text
+                    }
+                }
+            },
+            sip_hp: {
+                render: function (text) {
+                    return text.chinese_country + (text.province ? "/" + text.province : "");
+                }
+            },
+            dip: {
+                render: function (text) {
+                    let name = getAssetNameOrIp(text);
+                    let department = getDepartment(text);
+                    if (department) {
+                        return `<span>${name}(${department})</span>`
+                    } else {
+                        return `<span>${text}</span>`
+                    }
+                },
+                filter: function (text) {
+                    let name = getAssetName(text);
+                    let department = getDepartment(text);
+                    if (department) {
+                        return text + name + department
+                    } else {
+                        return text
+                    }
+                }
+            },
+            dip_hp: {
+                render: function (text) {
+                    return text.chinese_country + (text.province ? "/" + text.province : "");
+                }
+            },
+            proto: {
+                render: function (text) {
+                    // 6-tcp 17-udp 1-icmp
+                    if (text === 6) {
+                        return "TCP"
+                    } else if (text === 17) {
+                        return "UDP"
+                    } else if (text === 1) {
+                        return "ICMP"
+                    } else {
+                        return ""
+                    }
+                }
+            },
+            bytes: {
+                render: function (text, data) {
+                    let str = PreferSpeed1024(text, "B", 2, "");
+                    return `<span class="showDetail">${str}</span>`;
+                },
+                filter: function (text) {
+                    return PreferSpeed1024(text, "B", 2, "")
+                }
+            },
+            action: {
+                render: function (text, data) {
+                    let query_btn = {
+                        enable: true,
+                        id: "edit_item",
+                        name: "edit_item",
+                        // button_icon: "icon-search",
+                        button_text: "查看",
+                        value: "",
+                        functions: {
+                            // onmouseover: "",
+                            // onmouseout: ""
+                        }
+                    };
+
+                    return detailTablePanel.createActionText([query_btn]);
+                }
+            }
+        },
+        header: [
+            {
+                type: "index",
+                title: "序号",
+                name: "index",
+                align: "center",
+                width: "5%"
+            },
+            {
+                type: "text",
+                title: "时间",
+                name: "@timestamp",
+                width: "10%"
+            },
+            {
+                type: "text",
+                title: "源IP",
+                name: "sip",
+                notContextHidden: true,
+                width: "14%"
+            },
+            // {
+            //     type: "text",
+            //     title: "源端口",
+            //     name: "sport",
+            //     width: "10%"
+            // },
+            {
+                type: "text",
+                title: "源区域",
+                name: "sip_hp",
+                width: "12%"
+            },
+            {
+                type: "text",
+                title: "目的IP",
+                name: "dip",
+                notContextHidden: true,
+                width: "14%"
+            },
+            {
+                type: "text",
+                title: "目的端口",
+                name: "dport",
+                width: "7%"
+            },
+            {
+                type: "text",
+                title: "目的区域",
+                name: "dip_hp",
+                width: "12%"
+            },
+            {
+                type: "text",
+                title: "协议",
+                name: "proto",
+                width: "7%"
+            },
+            {
+                type: "text",
+                title: "流量",
+                name: "bytes",
+                notContextHidden: true,
+                width: "7%"
+            },
+            {
+                type: "text",
+                title: "访问次数",
+                align: "center",
+                name: "count",
+                width: "7%"
+            },
+            {
+                type: "action",
+                title: "详情",
+                name: "action",
+                align: "center",
+                width: "5%"
+            }
+        ],
+        isLoadData: true,
+        // 翻页时触发的函数
+        loadRefresh: function () {}
+    };
+
+    $.post("data/data1.json", "", function (res) {
+        if (res.status) {
+            alert(res.mesg);
+            return false;
+        }
+
+        asset_info = res.asset_info;
+        detailData = res.detail_data;
+        tableTotal = res.total;
+
+        updateTable();
+    });
+
+    function updateTable() {
+        let searchTable = $("#searchTable").val();
+        let loadData = {
+            data: detailData,
+            totalNum: tableTotal,
+            filterCheck: [],
+            filterKey: searchTable
+        };
+
+        detailTablePanel.loadData(loadData);
+    }
+
+    detailTablePanel = SATable.create(detailOption);
+    detailTablePanel.render();
+
+
+
+
+    /*  通过ip得到单位名称   */
+    function getDepartment(ip) {
+        let departmentId = asset_info.ip_map && asset_info.ip_map[ip] && asset_info.ip_map[ip].departmentId;
+        let department = asset_info.department_name && asset_info.department_name[departmentId];
+        if (typeof department === "string") {
+            let departmentArr = department.split("/");
+            department = departmentArr[departmentArr.length - 1]
+        }
+        return department;
+    }
+    /*  通过ip得到资产名称    */
+    function getAssetName(ip) {
+        return asset_info.ip_map && asset_info.ip_map[ip] && (asset_info.ip_map[ip].name || "N/A");
+    }
+    /*  通过ip得到资产名称 否则得到 IP    */
+    function getAssetNameOrIp(ip) {
+        return asset_info.ip_map && asset_info.ip_map[ip] && (asset_info.ip_map[ip].name || ip);
+    }
+
+    var SCALE_INT = {
+        '': 1,
+        'K': 1000,
+        'M': 1000 * 1000,
+        'G': 1000 * 1000 * 1000,
+        'T': 1000 * 1000 * 1000 * 1000
+    };
+
+    var SCALE_INT1024 = {
+        '': 1,
+        'K': 1024,
+        'M': 1024 * 1024,
+        'G': 1024 * 1024 * 1024,
+        'T': 1024 * 1024 * 1024 * 1024
+    };
+
+    function PreferSpeed(value, ps, fixed, extStr) {
+        var _value = parseFloat(value);
+        // var _value = dev.throughput_config.unit=='b' ? parseFloat(value)*8:parseFloat(value);
+        var lst = ['T', 'G', 'M', 'K', ''];
+        var delta = 0;
+        if (fixed === undefined) fixed = 0;
+        if (extStr === undefined) extStr = '';
+        else {
+            delta = 1 / (fixed * 100);
+        }
+        var tmpStr;
+        for (var i = 0; i < lst.length; i++) {
+            var unit = lst[i];
+            if (_value > SCALE_INT[unit]) {
+                return String((_value / SCALE_INT[unit] + delta).toFixed(fixed)).replace(/\.0*$/, '') + unit + ps + extStr;
+            }
+        }
+        return value + ps + extStr;
+    }
+
+    function PreferSpeed1024(value, ps, fixed, extStr) {
+        var _value = parseFloat(value);
+        var lst = ['T', 'G', 'M', 'K', ''];
+        var delta = 0;
+        if (fixed === undefined) fixed = 0;
+        if (extStr === undefined) extStr = '';
+        else {
+            delta = 1 / (fixed * 100);
+        }
+        for (var i = 0; i < lst.length; i++) {
+            var unit = lst[i];
+            if (_value > SCALE_INT1024[unit]) {
+                return String((_value / SCALE_INT1024[unit] + delta).toFixed(fixed)).replace(/\.?0*$/, '') + unit + ps + extStr;
+            }
+        }
+        return value + ps + extStr;
+    }
+</script>
