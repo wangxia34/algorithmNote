@@ -8,12 +8,13 @@
     <script src="js/colResizable-1.6.js"></script>
     <script src="js/SATable.js"></script>
     <style>
-        /*.table-content {*/
-            /*width: 100%;*/
-            /*overflow-y: auto;*/
-            /*height: 100%;*/
-            /*overflow-x: visible;*/
-        /*}*/
+        .table-panel-td {
+            word-wrap: break-word;
+            max-width: 120px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -175,7 +176,7 @@
                 type: "text",
                 title: "源IP",
                 name: "sip",
-                notContextHidden: true,
+                // notContextHidden: true,
                 width: "14%"
             },
             // {
@@ -194,7 +195,7 @@
                 type: "text",
                 title: "目的IP",
                 name: "dip",
-                notContextHidden: true,
+                // notContextHidden: true,
                 width: "14%"
             },
             {

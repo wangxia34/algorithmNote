@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/SAPanel.css">
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/SASelect.js"></script>
+    <style>
+        .demo {
+            width: 180px;
+            margin: 10px;
+            color: white;
+        }
+        input {
+            color: white;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">
+        <div class="form-select-div" id="map"></div>
+    </div>
+    <div class="demo">
+        <div class="form-select-div" id="map2"></div>
+    </div>
+    <div class="demo">
+        <div class="form-select-div" id="map3"></div>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    var china_location = [
+        {"city": "沈阳市"},
+        {"city": "长春市"},
+        {"city": "哈尔滨市"},
+        {"city": "北京市"},
+        {"city": "天津市"},
+        {"city": "呼和浩特市"},
+        {"city": "银川市"},
+        {"city": "太原市"},
+        {"city": "石家庄市"},
+        {"city": "济南市"},
+        {"city": "郑州市"},
+        {"city": "西安市"},
+        {"city": "武汉市"},
+        {"city": "南京市"},
+        {"city": "合肥市"},
+        {"city": "上海市"},
+        {"city": "长沙市"},
+        {"city": "南昌市"},
+        {"city": "杭州市"},
+        {"city": "福州市"},
+        {"city": "广州市"},
+        {"city": "台北市"},
+        {"city": "海口市"},
+        {"city": "南宁市"},
+        {"city": "重庆市"},
+        {"city": "昆明市"},
+        {"city": "贵阳市"},
+        {"city": "成都市"},
+        {"city": "兰州市"},
+        {"city": "西宁市"},
+        {"city": "拉萨市"},
+        {"city": "乌鲁木齐市"},
+        {"city": "香港"},
+        {"city": "澳门"}
+    ];
+
+    // 单选
+    var map_select = SASelect.create({
+        id: "map",
+        options: china_location,
+        value: "index",
+        text: "city",
+        selected: "27" // 选中成都
+    });
+    map_select.render();
+
+    map_select.setVal("2");// 设置值
+    map_select.getVal(); // 得到值
+
+
+    // 多选
+    var map2_select = SASelect.create({
+        id: "map2",
+        options: china_location,
+        value: "city",
+        text: "city",
+        multiple: true,
+        // allSelection: true,
+        // allSelectionText: "全部单位",
+        onchange: function () {
+            // 值改变事件
+        }
+    });
+    map2_select.render();
+
+
+    // 多选并可以选择全部
+    var map3_select = SASelect.create({
+        id: "map3",
+        options: china_location,
+        value: "city",
+        text: "city",
+        multiple: true,
+        allSelection: true,
+        allSelectionText: "全部",
+        onchange: function () {
+            // 值改变事件
+        }
+    });
+    map3_select.render();
+
+
+
+</script>
