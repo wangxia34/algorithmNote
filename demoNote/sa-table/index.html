@@ -7,10 +7,18 @@
     <script src="js/jquery-3.1.0.min.js"></script>
     <script src="js/colResizable-1.6.js"></script>
     <script src="js/SATable.js"></script>
+    <style>
+        /*.table-content {*/
+            /*width: 100%;*/
+            /*overflow-y: auto;*/
+            /*height: 100%;*/
+            /*overflow-x: visible;*/
+        /*}*/
+    </style>
 </head>
 <body>
 <div id="main_content">
-    <div class="content-panel table-content">
+    <div class="content-panel table-content" id="table_content">
         <div class="table-nav">
             <div class="table-nav-item">详情</div>
         </div>
@@ -39,7 +47,7 @@
         // 设置table表格 列可拖动功能
         colResizable: true,
         scrollConfig: {
-            scrollDom: "main_content",
+            // scrollDom: "table_content",
             scrollNumber: 30,
             scrollHeight: 300
         },

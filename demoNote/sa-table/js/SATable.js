@@ -452,8 +452,8 @@ class SATable {
         }
         
         data.filterCheck || (data.filterCheck = []);
-        // DTable.filterData(data.filterCheck, data.filterKey, data.data, true)
-        DTable.initScroll(data.data)
+        DTable.filterData(data.filterCheck, data.filterKey, data.data, true)
+        // DTable.initScroll(data.data)
     }
     
     
@@ -502,7 +502,7 @@ class SATable {
         if (data) {
             this.addData(data);
         }
-        this.scrollEventBind = this.scrollEvent.bind(this);
+        this.scrollEventBind = this.updateVisibleData.bind(this);
         this.vlist.container.addEventListener("scroll", this.scrollEventBind, false);
     }
     
@@ -624,15 +624,19 @@ class SATable {
         const end = start + visibleCount; // 取得可见区域的结束数据索引
         this.vlist.visibleData = this.vlist.data.slice(start, end); // 计算出可见区域对应的数据
     
+        let str = "";
+        this.vlist.items = [];
         for (var i = start; i < end; i++) {
             var item = this.renderItem({
                 index: i
             });
-            $(this.vlist.containerUL).append(item.dom);
+            str += item.dom;
+            // $(this.vlist.containerUL).append(item.dom);
             this.vlist.items.push(item);
         }
+        $(this.vlist.containerUL).html(str);
         
-        this.vlist.containerUL.style.webkitTransform = `translate3d(0, ${ start * this.vlist.itemHeight }px, 0)`; // 把可见区域的 top 设置为起始元素在整个列表中的位置（使用 transform 是为了更好的性能）
+        this.vlist.containerUL.style.webkitTransform = `translate3d(0, ${ start * this.vlist.itemHeight  }px, 0)`; // 把可见区域的 top 设置为起始元素在整个列表中的位置（使用 transform 是为了更好的性能）
     }
     
     static parseElement(htmlString){
@@ -1302,7 +1306,7 @@ class SATable {
         if (DClass.td === "table-panel-td-hideHeader") {
             tableBody += `<td class="${classArr.join(" ")}" width="${header.width}">`;
         } else {
-            tableBody += `<td class="${classArr.join(" ")}">`;
+            tableBody += `<td class="${classArr.join(" ")}" width="${header.width}">`;
         }
         
         if (header.type === "index") {
