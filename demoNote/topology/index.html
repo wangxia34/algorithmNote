@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/go.js"></script>
+    <script src="js/icons.js"></script>
+    <style>
+        #mySavedModel {
+            width: 100%;
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body>
+<div id="sample">
+    <div id="myDiagramDiv" style="border: solid 1px black; width: 100%; height: 400px"></div>
+    <div>
+        <div>
+            <button id="SaveButton" onclick="save()">Save</button>
+            <button id="btn" onclick="Regression()">Regression</button>
+            name:<input type="text" id="ipt">
+        </div>
+        <textarea name="" id="mySavedModel"></textarea>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    window.onload = init;
+
+    function init() {
+        var newName;
+        var ipt = document.getElementById("ipt");
+        ipt.onblur = function () {
+            newName = ipt.value; // 记录当前输入的节点名称
+        };
+
+        var $ = go.GraphObject.make;  //为了简洁
+
+        myDiagram =
+            $(go.Diagram, "myDiagramDiv",   //为DIV 素创建一个图表
+                {
+                    //将内容居中
+                    initialContentAlignment: go.Spot.Center,
+                    // 打开Ctrl-Z撤销和Ctrl-Y重做功能
+                    "undoManager.isEnabled": true,
+                });
+
+        // 当文档被修改后，在标题中添加一个“*”，并启用“保存”按钮。
+        myDiagram.addDiagramListener("Modified", function (e) {
+            var button = document.getElementById("SaveButton");
+            if (button) button.disabled = !myDiagram.isModified;
+            var idx = document.title.indexOf("*");
+            if (myDiagram.isModified) {
+                if (idx < 0) document.title += "*";
+            } else {
+                if (idx >= 0) document.title = document.title.substr(0, idx);
+            }
+        });
+
+        // SelectionDeleting：CommandHandler.deleteSelection删除所选部件
+        myDiagram.addDiagramListener("SelectionDeleting", function (e) {
+            var selectNode = e.subject.Ea.key.Zd;
+            recursive(selectNode)
+        });
+
+        function recursive(obj) {
+            var nodeArr = [];
+            if (obj.to) {
+                myDiagram.model.Ie.forEach(function (value) {
+                    if (value.id === obj.to) {
+                        obj = value;
+                        nodeArr.push(myDiagram.findNodeForData(value));
+                    }
+                })
+            }
+            if (obj.children && obj.children.length) {
+                var childrenNode = obj.children;
+                childrenNode.forEach(function (value1) {
+                    myDiagram.model.Ie.forEach(function (value2, index2) {
+                        if (value1 === value2.id) {
+                            var node = myDiagram.findNodeForData(myDiagram.model.Ie[index2]);
+                            recursive(myDiagram.model.Ie[index2]);
+                            nodeArr.push(node);
+                        }
+                    })
+                })
+            }
+
+            myDiagram.removeParts(nodeArr);
+        }
+
+
+        function geoFunc(geoname) {
+            var geo = icons[geoname];
+            if (geo === undefined) geo = "heart";  // use this for an unknown icon name
+            if (typeof geo === "string") {
+                geo = icons[geoname] = go.Geometry.parse(geo, true);  // fill each geometry
+            }
+            return geo;
+        }
+
+        // 定义节点模板
+        myDiagram.nodeTemplate =
+            $(go.Node, "Vertical",
+                new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+                $(go.Shape,
+                    {figure: "Club", width: 40, height: 40, margin: 3, fill: '#00B5CB', strokeWidth: 0},
+                    new go.Binding("geometry", "geo", geoFunc)),
+                $(go.TextBlock,
+                    {
+                        editable: false,  // 文本是否可编辑
+                        stroke: "black"  //字体颜色
+                    },
+                    new go.Binding("text", "name").makeTwoWay())
+            );
+        // 连线模板
+        myDiagram.linkTemplate =
+            $(go.Link,  // the whole link panel
+                {},
+                new go.Binding("points").makeTwoWay(),
+                $(go.Shape, // 线的样式
+                    {strokeWidth: 1.5, stroke: "black"})
+            );
+
+        // 给节点添加一个按钮
+        myDiagram.nodeTemplate.selectionAdornmentTemplate =
+            $(go.Adornment, "Spot",
+                //获取焦点时候出现蓝色边框
+                $(go.Panel, "Auto",
+                    $(go.Shape, {fill: null, stroke: "blue", strokeWidth: 1}),
+                    $(go.Placeholder)  // a Placeholder sizes itself to the selected Node
+                ),
+                // 在右上角创建添加节点的按钮
+                $("Button",
+                    {
+                        alignment: go.Spot.TopRight,
+                        click: addNodeAndLink  // 点击后运行的添加的函数
+                    },
+                    $(go.Shape, "PlusLine", {width: 6, height: 6})
+                )
+            );
+
+        // 单击按钮将新节点插入所选节点的右边
+        function addNodeAndLink(e, obj) {
+            if (myDiagram.model.Ie.some(function (nodeObj) {
+                    return nodeObj.name === newName
+                })) {
+                alert("名字重复");
+                return false;
+            }
+            var adornment = obj.part;
+            var diagram = e.diagram;
+            diagram.startTransaction("Add State");
+
+            // 获取用户单击按钮的节点数据。
+            var fromNode = adornment.adornedPart;
+            var fromData = fromNode.data;
+
+            //创建一个新的"State"数据对象，定位到装饰节点的右侧。
+            var toData = {text: ""};
+            var p = fromNode.location.copy();
+            p.x += 200;
+            toData.loc = go.Point.stringify(p);  // “loc”属性是一个字符串，而不是一个点对象
+            toData.geo = "computer"; // 添加节点类型
+            toData.children = [];
+            toData.name = newName;
+
+            // 向model添加新的节点数据
+            var model = diagram.model;
+            model.addNodeData(toData);
+
+            toData.nodeID = fromData.nodeID + "-" + toData.id;
+
+            myDiagram.model.Ie.forEach(function (value, index) {
+                value.children.forEach(function (value2, index2) {
+                    if (value2 === toData.id) value.children.splice(index2, 1)
+                })
+            });
+            fromData.children.push(toData.id);
+
+            // 创建从旧节点数据到新节点数据的链接数据
+            var linkdata = {
+                from: model.getKeyForNodeData(fromData),  // or just: fromData.id
+                to: model.getKeyForNodeData(toData)
+            };
+
+            //向model添加新的链接数据
+            model.addLinkData(linkdata);
+
+            // 找到新添加的节点并将其选中
+            var newnode = diagram.findNodeForData(toData);
+            diagram.select(newnode);
+
+            diagram.commitTransaction("Add State");
+
+            // 如果新节点不在屏幕上，则滚动图表以显示新节点
+            diagram.scrollToRect(newnode.actualBounds);
+        }
+
+
+
+        // model中的nodeDataArray每一个js对象都代表着一个相应的模型图中的元素
+        var model = {
+            nodeKeyProperty: "id",
+            nodeDataArray: [
+                {id: 0, loc: "120 120", geo: "computer", children: [1], name: "用户计算机1",nodeID:"1"},
+                {id: 1, loc: "330 120", geo: "GAP", children: [2, 4], name: "GAP"},
+                {id: 2, loc: "226 376", geo: "IPS", children: [3], name: "IPS"},
+                {id: 3, loc: "60 276", geo: "IDS", children: [], name: "IDS"},
+                {id: 4, loc: "226 226", geo: "ICG", children: [], name: "ICG"}
+            ],
+            linkDataArray: [
+                {from: 0, to: 1},
+                {from: 1, to: 2},
+                {from: 1, to: 4},
+                {from: 2, to: 3}
+            ]
+        };
+        myDiagram.model = go.Model.fromJson(model);
+    }
+
+    // Show the diagram's model in JSON format
+    function save() {
+        document.getElementById("mySavedModel").value = myDiagram.model.toJson();
+    }
+    function Regression() {
+        myDiagram.undoManager.undo();
+    }
+
+
+</script>
