@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/three.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/d3-threeD.js"></script>
+    <script src="js/Tween.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        button {
+            width: 100px;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            margin-left: -50px;
+            background: #0c7b7b;
+            border: 0;
+            color: #fff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<button id="btn">点击</button>
+</body>
+</html>
+<script>
+
+    const topologyData = [
+        {
+            "id": "1",
+            "name": "路由器",
+            "geo": "Router",
+            "position": [0, 400, 0]
+        }, {
+            "id": "1-1",
+            "name": "服务器",
+            "geo": "Server",
+            "position": [-300, 200, -200]
+        }, {
+            "id": "1-1-1",
+            "name": "服务器",
+            "geo": "Server",
+            "position": [-300, 100, -300]
+        }, {
+            "id": "1-1-1-1",
+            "name": "服务器",
+            "geo": "Server",
+            "position": [-400, 0, -300]
+        }, {
+            "id": "1-1-1-2",
+            "name": "服务器",
+            "geo": "Server",
+            "position": [-300, 0, -200]
+        }, {
+            "id": "1-1-1-3",
+            "name": "服务器",
+            "geo": "Server",
+            "position": [-200, 0, -300]
+        }, {
+            "id": "1-2",
+            "name": "主机",
+            "geo": "Host",
+            "position": [300, 200, -300]
+        }, {
+            "id": "1-2-1",
+            "name": "主机",
+            "geo": "Host",
+            "position": [200, 100, -300]
+        }, {
+            "id": "1-2-1-1",
+            "name": "服务器",
+            "geo": "Server",
+            "position": [100, 0, -300]
+        }, {
+            "id": "1-2-1-2",
+            "name": "服务器",
+            "geo": "Server",
+            "position": [200, 0, -300]
+        }, {
+            "id": "1-2-2",
+            "name": "主机",
+            "geo": "Host",
+            "position": [400, 100, -300]
+        }, {
+            "id": "1-2-2-1",
+            "name": "服务器",
+            "geo": "Server",
+            "position": [400, 0, -400]
+        }, {
+            "id": "1-2-2-2",
+            "name": "服务器",
+            "geo": "Server",
+            "position": [500, 0, -300]
+        }, {
+            "id": "1-3",
+            "name": "交换机",
+            "geo": "Switch",
+            "position": [0, 200, 300]
+        }, {
+            "id": "1-3-1",
+            "name": "交换机",
+            "geo": "Switch",
+            "position": [-100, 100, 300]
+        }, {
+            "id": "1-3-1-1",
+            "name": "主机",
+            "geo": "Host",
+            "position": [-200, 0, 300]
+        }, {
+            "id": "1-3-1-2",
+            "name": "主机",
+            "geo": "Host",
+            "position": [-100, 0, 200]
+        }, {
+            "id": "1-3-2",
+            "name": "交换机",
+            "geo": "Switch",
+            "position": [100, 100, 300]
+        }, {
+            "id": "1-3-2-1",
+            "name": "主机",
+            "geo": "Host",
+            "position": [200, 0, 300]
+        }, {
+            "id": "1-4",
+            "name": "防火墙",
+            "geo": "Firewall",
+            "position": [400, 0, 300],
+        }, {
+            "id": "1-5",
+            "name": "IDS",
+            "geo": "IDS",
+            "position": [500, 100, 300],
+        }, {
+            "id": "1-5-1",
+            "name": "IPS",
+            "geo": "IPS",
+            "position": [500, 0, 300],
+        },
+        {
+            "id": "1-5-2",
+            "name": "GAP",
+            "geo": "GAP",
+            "position": [600, 0, 300],
+        },
+        {
+            "id": "1-6",
+            "name": "数据库",
+            "geo": "Database",
+            "position": [-300, 0, 0],
+        },
+    ];
+    // 层级位置数据
+    const topologyRelationshipData = [
+        {
+            "id": "1",
+            "name": "路由器",
+            "position": [0, 400, 0],
+            "child": [
+                {
+                    "id": "1-1",
+                    "name": "服务器",
+                    "position": [-300, 200, -200],
+                    "child": [{
+                        "id": "1-1-1",
+                        "name": "服务器",
+                        "position": [-300, 100, -300],
+                        "child": [{
+                            "id": "1-1-1-1",
+                            "name": "服务器",
+                            "position": [-400, 0, -300],
+                            "child": []
+                        },
+                            {
+                                "id": "1-1-1-2",
+                                "name": "服务器",
+                                "position": [-300, 0, -200],
+                                "child": []
+                            },
+                            {
+                                "id": "1-1-1-3",
+                                "name": "服务器",
+                                "position": [-200, 0, -300],
+                                "child": []
+                            }]
+                    }]
+                },
+                {
+                    "id": "1-2",
+                    "name": "主机",
+                    "position": [300, 200, -300],
+                    "child": [{
+                        "id": "1-2-1",
+                        "name": "主机",
+                        "position": [200, 100, -300],
+                        "child": [{
+                            "id": "1-2-1-1",
+                            "name": "服务器",
+                            "position": [100, 0, -300],
+                            "child": []
+                        },
+                            {
+                                "id": "1-2-1-2",
+                                "name": "服务器",
+                                "position": [200, 0, -300],
+                                "child": []
+                            }]
+                    },
+                        {
+                            "id": "1-2-2",
+                            "name": "主机",
+                            "position": [400, 100, -300],
+                            "child": [{
+                                "id": "1-2-2-1",
+                                "name": "服务器",
+                                "position": [400, 0, -400],
+                                "child": []
+                            },
+                                {
+                                    "id": "1-2-2-2",
+                                    "name": "服务器",
+                                    "position": [500, 0, -300],
+                                    "child": []
+                                }]
+                        }]
+                },
+                {
+                    "id": "1-3",
+                    "name": "交换机",
+                    "position": [0, 200, 300],
+                    "child": [{
+                        "id": "1-3-1",
+                        "name": "交换机",
+                        "position": [-100, 100, 300],
+                        "child": [{
+                            "id": "1-3-1-1",
+                            "name": "主机",
+                            "position": [-200, 0, 300],
+                            "child": []
+                        },
+                            {
+                                "id": "1-3-1-2",
+                                "name": "主机",
+                                "position": [-100, 0, 200],
+                                "child": []
+                            }]
+                    },
+                        {
+                            "id": "1-3-2",
+                            "name": "交换机",
+                            "position": [100, 100, 300],
+                            "child": [{
+                                "id": "1-3-2-1",
+                                "name": "主机",
+                                "position": [200, 0, 300],
+                                "child": []
+                            }]
+                        }]
+                },
+                {
+                    "id": "1-4",
+                    "name": "防火墙",
+                    "position": [400, 0, 300],
+                    "child": []
+                },
+                {
+                    "id": "1-5",
+                    "name": "IDS",
+                    "position": [500, 100, 300],
+                    "child": [{
+                        "id": "1-5-1",
+                        "name": "IPS",
+                        "position": [500, 0, 300],
+                        "child": []
+                    }, {
+                        "id": "1-5-2",
+                        "name": "GAP",
+                        "position": [600, 0, 300],
+                        "child": []
+                    }]
+                },
+                {
+                    "id": "1-6",
+                    "name": "数据库",
+                    "position": [-300, 0, 0],
+                    "child": []
+                },
+            ]
+        }
+    ];
+    // 攻击路径
+    const attackEvent = {
+        source: "1-1-1-2",
+        target: "1-3-1-2"
+    };
+
+    //场景
+    const scene = new THREE.Scene();
+    scene.scale.set(0.1, 0.1, 0.1);
+
+    //渲染器
+    const renderer = new THREE.WebGLRenderer({antialias: true, logarithmicDepthBuffer: true});
+    renderer.setClearColor("#000");
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // 相机
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 200000);
+    camera.position.set(400, 650, 900);
+    camera.lookAt(scene.position);
+
+    // 灯光
+    const light = new THREE.DirectionalLight(0xffeedd);
+    light.position.set(10, 15, 20);
+    scene.add(light);
+
+    //鼠标控制
+    const controls = new THREE.OrbitControls(camera, document.getElementById("container"));
+    controls.rotateSpeed = 0.5;
+    controls.minPolarAngle = 0;
+    controls.maxPolarAngle = Math.PI * 0.47;
+    controls.keyPanSpeed = 5.0;
+
+    //网格
+    const grid = new THREE.GridHelper(20, 20, "#2c5b7b", "#2c5b7b");
+    grid.scale.set(150, 150, 150);
+    scene.add(grid);
+
+
+    // 将svg路径转化为形状
+    function createInternet(position) {
+        let svgImgData = {
+            amount: 6,
+            bevelThickness: 5,
+            bevelSize: 0.5,
+            bevelSegments: 3,
+            bevelEnabled: true,
+            curveSegments: 12,
+            steps: 1
+        };
+        let shape = createMesh(new THREE.ExtrudeGeometry(drawShape(), svgImgData));
+        shape.position.set(position[0] + 25, position[1] + 5, position[2]);
+        scene.add(shape);
+
+        function drawShape() {
+            let svgString = "M0 731.459874c0 144.991797 108.542977 265.294814 251.051287 288.522719l50.254084 4.017405 497.135601 0L808.521006 1022.612167l497.135601 1.387831 50.254084-4.017405C1498.419 996.754688 1606.961977 876.451671 1606.961977 731.459874c0-127.388259-83.854198-235.785148-200.943291-275.959198C1401.78215 203.207646 1189.809257 0 929.043154 0c-188.087595 0-350.755973 105.694272-428.474498 259.305228C463.827662 219.861616 410.651829 195.026749 351.486411 195.026749c-110.95342 0-200.870247 87.360297-200.870247 195.026749 0 28.121835 6.135673 54.855838 17.092232 79.033312C68.368928 516.857407 0 616.416006 0 731.459874zM251.051287 494.798201 226.946857 431.615378C221.32249 419.49012 218.473785 406.56138 218.473785 393.121335c0-52.445395 53.029745-130.383051 136.226549-130.383051 28.560097 0 62.014124 14.243527 81.15158 34.476639l78.522006 54.563663 66.761966-89.040302c75.600257-112.70647 203.134603-190.205863 346.9577-190.205863 202.842428 0 403.055281 193.346743 406.269205 386.620443l0 68.515015 70.633283 18.918325c79.617662 26.807048 133.012625 98.901205 133.012625 179.395392 0 93.276838-95.541194 210.1468-191.812825 225.485983l-44.191454 0-493.629502 0 0 0.58435-10.080034 0 0-0.58435L304.81147 951.467578 271.50353 948.838004c-96.271631-15.339183-202.623297-129.506527-202.623297-222.783365C68.880234 653.083956 131.040445 536.213994 251.051287 494.798201z";
+            return transformSVGPathExposed(svgString);
+        }
+        function createMesh(geom) {
+            let meshMaterial = new THREE.MeshBasicMaterial({color: "#79BBDE"});
+            let mesh = new THREE.Mesh(geom, meshMaterial);
+            mesh.scale.x = 0.03;
+            mesh.scale.y = 0.03;
+            mesh.rotation.z = Math.PI;
+            return mesh;
+        }
+    }
+
+    // createInternet([-100, 30, 100]);
+
+    // 创建贴图节点
+    class Machine {
+        constructor(length, height, width) {
+            this.machineName = [];
+            this.length = length;
+            this.height = height;
+            this.width = width;
+        }
+
+        createMachine(position, name) {
+            let cube = new THREE.Mesh(new THREE.CubeGeometry(this.length, this.height, this.width),
+                this.machineName);
+            cube.diyName = name;
+            cube.position.set(position[0], position[1], position[2]);
+            scene.add(cube);
+        }
+
+        loadImg(i, imgName) {
+            let material = new THREE.MeshBasicMaterial({
+                map: new THREE.TextureLoader().load('img/' + imgName + i + '.png'),
+            });
+            material.imgName = imgName;
+            this.machineName.push(material);
+        }
+
+    }
+
+    // 创建圆柱形的贴图节点
+    class CyMachine extends Machine {
+        constructor(...argArr) {
+            super();
+            this.radiusTop = argArr[0];
+            this.radiusBottom = argArr[1];
+            this.CYheight = argArr[2];
+            this.radialSegments = argArr[3];
+        }
+
+        // 重写创建模型的方法（因为创建圆柱外形不同）
+        createMachine(position, name) {
+            let cylindrical = new THREE.Mesh(new THREE.CylinderGeometry(this.radiusTop, this.radiusBottom, this.CYheight, this.radialSegments),
+                this.machineName);
+            cylindrical.diyName = name;
+            cylindrical.position.set(position[0], position[1], position[2]);
+            scene.add(cylindrical);
+        }
+    }
+
+    // 加载不同机器的模型图片，放入相应的数组
+    function renderFace() {
+        for (let i = 0; i < 6; i++) {
+            this.Switch.loadImg(i, "switches");
+            this.IDS.loadImg(i, "IDS");
+            this.IPS.loadImg(i, "IPS");
+            this.GAP.loadImg(i, "GAP");
+            this.Host.loadImg(i, "host");
+            this.Server.loadImg(i, "server");
+            this.Firewall.loadImg(i, "firewall");
+            if (i < 3) {
+                this.Database.loadImg(i, "database");
+                this.Router.loadImg(i, "router");
+            }
+        }
+    }
+
+    let model = {
+        //创建交换机
+        Switch: new Machine(30, 8, 16),
+
+        IDS: new Machine(30, 8, 16),
+
+        IPS: new Machine(30, 8, 16),
+
+        GAP: new Machine(30, 8, 16),
+
+        Firewall: new Machine(25, 25, 9),
+
+        //创建主机
+        Host: new Machine(25, 20, 5),
+
+        // 创建服务器
+        Server: new Machine(16, 32, 24),
+
+        // 创建路由器
+        Router: new CyMachine(15, 15, 12, 80),
+
+        // 创建路由器
+        Database: new CyMachine(12, 12, 25, 15),
+
+    };
+    // 重写创建主机的方式
+    model.Host.createMachine = function (position) {
+        let cubeRouter = new THREE.Mesh(new THREE.CubeGeometry(this.length, this.height, this.width),
+            this.machineName);
+        cubeRouter.position.set(position[0], position[1], position[2]);
+        scene.add(cubeRouter);
+        let cubeRouter1 = new THREE.Mesh(new THREE.CubeGeometry(3, 6, 3),
+            new THREE.MeshBasicMaterial({color: "#707070"}));
+        cubeRouter1.position.set(position[0], position[1] - 12, position[2]);
+        scene.add(cubeRouter1);
+        let cubeRouter2 = new THREE.Mesh(new THREE.CubeGeometry(12, 1, 12),
+            new THREE.MeshBasicMaterial({color: "#707070"}));
+        cubeRouter2.position.set(position[0], position[1] - 15, position[2]);
+        scene.add(cubeRouter2);
+    };
+
+    //将所有物体添加到场景
+    renderFace.call(model);
+
+    const topologyIdPosition = {};//以ID为key，position为值的对象【这里是为了方便得到对应节点的位置坐标】
+
+    topologyData.forEach(function (value) {
+        topologyIdPosition[value.id] = [value.position[0], value.position[1], value.position[2]];
+        model[value.geo].createMachine(value.position, value.name);
+    });
+
+    // 画线
+    function drawLine(source, target) {
+        let p1 = new THREE.Vector3(source[0], source[1], source[2]);//源点
+        for (let i = 0, len = target.length; i < len; i++) {
+            let p2 = new THREE.Vector3(target[i].position[0], target[i].position[1], target[i].position[2]);//目标点
+            let geometry = new THREE.Geometry();
+            geometry.vertices.push(p1);
+            geometry.vertices.push(p2);
+            let lineMetrial = new THREE.LineBasicMaterial({color: "#1dcaff"});
+            let line = new THREE.Line(geometry, lineMetrial);
+            line.diyData = "wang";
+            scene.add(line);
+        }
+    }
+
+    function initLine(topologyRelationshipData) {
+        if (!topologyRelationshipData) return;
+        for (let i = 0, len = topologyRelationshipData.length; i < len; i++) {
+            drawLine(topologyRelationshipData[i].position, topologyRelationshipData[i].child);
+            initLine(topologyRelationshipData[i].child);
+        }
+    }
+
+    initLine(topologyRelationshipData);
+
+    // 攻击点爆炸的函数
+    let isExplodeAnimationStart = true;
+    const parts = []; // 爆炸节点列表
+    function ExplodeAnimation(position, color) {
+        this.dirs = [];
+        let geometry = new THREE.Geometry();
+        for (i = 0; i < 200; i++) {
+            let vertex = new THREE.Vector3();
+            vertex.x = 0;
+            vertex.y = 0;
+            vertex.z = 0;
+
+            geometry.vertices.push(vertex);
+            this.dirs.push({
+                x: Math.random() * 2 - 1,
+                y: Math.random() * 2 - 1,
+                z: Math.random() * 2 - 1,
+            });
+        }
+        let material = new THREE.PointsMaterial({
+            size: 5,
+            color: color
+        });
+
+        this.object = new THREE.Points(geometry, material);
+        this.object.position.set(position[0], position[1], position[2]);
+        this.status = true;
+        scene.add(this.object);
+        this.update = function () {
+            if (this.status === true) {
+                let pCount = 500;
+                while (pCount--) {
+                    let particle = this.object.geometry.vertices[pCount];
+                    // 只要有任意一个点不在以下范围内就将该爆炸动画清除
+                    if (particle) {
+                        if (particle.y < 20 && particle.x < 20 && particle.z < 20 &&
+                            particle.y > -20 && particle.x > -20 && particle.z > -20) {
+                            particle.y += this.dirs[pCount].y;
+                            particle.x += this.dirs[pCount].x;
+                            particle.z += this.dirs[pCount].z;
+                        } else {
+                            // 将爆炸点移出场景并且需要将当前数据清除，否则数据不被清除数据会一直占用内存
+                            scene.remove(this.object);
+                            parts.splice(i, 1);
+                            break;
+                        }
+                    }
+                }
+                this.object.geometry.verticesNeedUpdate = true;
+            }
+        }
+    }
+
+    // 随机一个十六进制颜色
+    function getColor() {
+        var i = 0;
+        var str = "#";
+        var random = 0;
+        var aryNum = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+
+        for(i = 0; i < 6; i++)
+        {
+            random = parseInt(Math.random() * 16);
+
+            str += aryNum[random];
+        }
+
+        return str
+    }
+
+    // 创建一个攻击点模型的球体  [svgAttack, svg图标类型，本demo中只有一个图标所以使用true]
+    function createAttackPoint(path, svgAttack) {
+        if (!path || path.length < 2) return;
+        let color = getColor();
+        if (!svgAttack) {
+            let bollGeometry = new THREE.SphereGeometry(5, 20, 20);
+            let bollMertrial = new THREE.MeshBasicMaterial({color: color, "name": "boll"});
+            let boll = new THREE.Mesh(bollGeometry, bollMertrial);
+            let position = topologyIdPosition[path[0]]; //球的起点position数组
+            boll.position.set(position[0], position[1], position[2]);
+            scene.add(boll);
+            pointMove(0, path, path.length - 2, boll, color);
+        } else {
+            let position = topologyIdPosition[path[0]];
+            createSVGAttack(position, path, color, svgAttack)
+
+            // createCanvasAttack(position, path, color)
+        }
+    }
+
+    // 创建一直面向相机的canvas攻击点
+    let attackImg = {}; // 保存已加载图片，使图片只加载一次
+    function createCanvasAttack(position, path, color) {
+        let imgName = "email_" + parseInt(Math.random() * 4);
+        if (!attackImg[imgName]) {
+            attackImg[imgName] = new THREE.TextureLoader().load("img/" + imgName + ".png")
+        }
+        let spriteMaterial = new THREE.SpriteMaterial({map: attackImg[imgName]});
+        let sprite = new THREE.Sprite(spriteMaterial);
+        sprite.position.x = position[0];
+        sprite.position.y = position[1];
+        sprite.position.z = position[2];
+        sprite.scale.x = 30;
+        sprite.scale.y = 30;
+
+        scene.add(sprite);
+        pointMove(0, path, path.length - 2, sprite, color);
+    }
+
+    // 创建SVG攻击点
+    function createSVGAttack(position, path, color, svgAttack) {
+        let controls = {
+            depth: 1,
+            bevelThickness: 1,
+            bevelSize: 1,
+            bevelSegments: 3,
+            bevelEnabled: true,
+            curveSegments: 5,
+            steps: 1
+        };
+        let shape = createMesh(new THREE.ExtrudeGeometry(drawShape(), controls), color);
+        shape.position.set(position[0] + 5, position[1], position[2]);
+        shape.scale.x = 0.012;
+        shape.scale.y = 0.012;
+        shape.scale.z = 0.012;
+        scene.add(shape);
+        pointMove(0, path, path.length - 2, shape, color, svgAttack);
+    }
+
+    // 将svg添加材质等
+    function createMesh(geom, color) {
+        let meshMaterial = new THREE.MeshBasicMaterial({color: color});
+        let mesh = new THREE.Mesh(geom, meshMaterial);
+        mesh.scale.x = 0.05;
+        mesh.scale.y = 0.05;
+        mesh.rotation.z = Math.PI;
+        return mesh;
+    }
+
+    // 将svg路径转化为形状
+    function drawShape() {
+        // 这里只是举了一个例子，可以以类型区分生成各种svg图标
+        let svgString = "M69.994332 906.24241l0-714.678974 313.13254 292.871023-252.347988 340.761882 311.290584-285.503198 171.301919 160.250182 167.618007-156.56627 307.606672 281.819286-248.664076-337.07797 318.658408-298.396891 0 716.52093q0 14.735649-10.130759 24.866408t-23.024451 10.130759l-1020.443689 0q-14.735649 0-24.866408-10.130759t-10.130759-24.866408l0 0zM114.201279 151.040402l998.340216 0-499.170108 466.014898z";
+        return transformSVGPathExposed(svgString);
+    }
+
+    // 让攻击点球体移动
+    function pointMove(i, path, len, boll, color, svgAttack) {
+        let tween = new TWEEN.Tween(boll.position);
+        let position = JSON.parse(JSON.stringify(topologyIdPosition[path[i + 1]]));
+
+        // 如果是svg的话，对定位做一个偏移
+        if (svgAttack) {
+            position[0] += 8;
+            position[1] += 6;
+        }
+
+        let startPoint = [boll.position.x, boll.position.y, boll.position.z];
+        let name1 = "" + startPoint + position;
+        let name2 = "" + position + startPoint;
+        let name = "";
+        if (!MoveLine[name1] && !MoveLine[name2]) {
+            MoveLine[name1] = {
+                currentPoint: [],
+                startPoint: [...startPoint],
+                endPoint: [...position]
+            };
+            name = name1
+        } else if (MoveLine[name2]) {
+            name = name2;
+            MoveLine[name].startPoint = [...startPoint];
+            MoveLine[name].endPoint = [...position];
+        } else {
+            name = name1;
+            MoveLine[name].startPoint = [...startPoint];
+            MoveLine[name].endPoint = [...position];
+        }
+        let currentLen = MoveLine[name].currentPoint.length;
+        MoveLine[name].currentPoint[currentLen] = {
+            color: color,
+            Point: startPoint
+        };
+
+        tween.to({x: position[0], y: position[1], z: position[2]}, 1000)
+            .onUpdate(function () {
+                MoveLine[name].currentPoint[currentLen].Point = [this.x, this.y, this.z];
+                moveSkinnedMesh(name, currentLen)
+            })
+            .onComplete(function () {
+                removeMoveBar(name, currentLen);
+                if (i < len) {
+                    pointMove(++i, path, len, boll, color, svgAttack);
+                } else if (i = len) {
+                    let position1 = null;
+                    topologyData.forEach(function (value) {
+                        if (value.id === attackEvent.target) {
+                            position1 = value.position
+                        }
+                    });
+                    let explodeAnimation = new ExplodeAnimation(position1, color);
+                    parts.push(explodeAnimation);
+                    if (isExplodeAnimationStart) {
+                        render();
+                        isExplodeAnimationStart = false;
+                    }
+
+                    function render() {
+                        let pCount = parts.length;
+                        while (pCount--) {
+                            parts[pCount].update(pCount);
+                        }
+                        requestAnimationFrame(render);
+                    }
+                    scene.remove(boll);
+                } else { // 到达或超过后去除小球
+                    scene.remove(boll);
+                }
+            }).start();
+
+    }
+
+    // 用柱状图模拟轨迹
+    let MoveLine = {};
+    let BarLen = 8; // 每根柱体切面有几个点
+    function makeLineMesh(v1, v2, name, color) {
+        let geometry = new THREE.CylinderGeometry(5, 5, 1, BarLen);
+        let absY = Math.abs(v1[1] - v2[1]),
+            absX = Math.abs(v1[0] - v2[0]),
+            absZ = Math.abs(v1[2] - v2[2]);
+
+        if (absX > absY * 2) {
+            geometry.rotateZ(Math.PI/2);
+        }
+        if (absZ > absY * 2) {
+            geometry.rotateX(Math.PI/2);
+        }
+
+        geometry.vertices.forEach((value, index) => {
+            if (index >= BarLen && index < BarLen*2 || index === BarLen*2+1) {
+                value.x = value.x + v2[0];
+                value.y = value.y + v2[1];
+                value.z = value.z + v2[2]
+            } else {
+                value.x = value.x + v1[0];
+                value.y = value.y + v1[1];
+                value.z = value.z + v1[2]
+            }
+        });
+
+        let material = new THREE.MeshBasicMaterial({
+            color: color,
+            side: THREE.DoubleSide, // 解决柱状图存在面显示不完全的问题
+        });
+        let cylinder = new THREE.Mesh(geometry, material);
+        scene.add(cylinder);
+
+        return cylinder
+    }
+    function moveSkinnedMesh(name) {
+        MoveLine[name].currentPoint.forEach((value, index) => {
+            if (value) {
+                if (value.bar) {scene.remove(value.bar)}
+                let start, end;
+
+                if (MoveLine[name].currentPoint[index].moveEnd) {
+                    end = MoveLine[name].endPoint
+                } else {
+                    end = value.Point
+                }
+
+                if (MoveLine[name].currentPoint[index + 1]) {
+                    start = MoveLine[name].currentPoint[index + 1].Point
+                } else {
+                    start = MoveLine[name].startPoint
+                }
+                value.bar = makeLineMesh(start, end, name, value.color)
+            }
+        })
+    }
+    function removeMoveBar(name, len) {
+        MoveLine[name].currentPoint[len].moveEnd = true;
+        if (len-1 >= 0 && MoveLine[name].currentPoint[len-1].moveEnd) {
+            scene.remove(MoveLine[name].currentPoint[len-1].bar);
+            MoveLine[name].currentPoint[len-1] = null
+        }
+        if (len === MoveLine[name].currentPoint.length - 1) {
+            MoveLine[name].currentPoint = [MoveLine[name].currentPoint[len]]
+        }
+    }
+
+
+
+    // 递归让某片区域下面的线和机器全部变颜色
+    function fn(sourceArr, totalArr) {
+        "use strict";
+        if (!sourceArr.length) {
+            return;
+        }
+        sourceArr.map(value => {
+            value.material.color = {r: 1, g: 0, b: 0}; // 线变成红色
+            let arr = totalArr.filter(value1 => {
+                if (value1.type === "Line") {
+                    return JSON.stringify(value.geometry.vertices[1]) === JSON.stringify(value1.geometry.vertices[0]);
+                }
+                else if (value1.type === "Mesh" && JSON.stringify(value.geometry.vertices[1]) === JSON.stringify(value1.position)) {
+                    let imgName = value1.material[0].imgName;
+                    let length = value1.material.length;
+                    let materialArr = [];
+                    for (let i = 0; i < length; i++) {
+                        let material = new THREE.MeshBasicMaterial({
+                            map: new THREE.TextureLoader().load('img/' + imgName + i + '.png'),
+                            color: 0xff0000 // 节点变成红色
+                        });
+                        material.imgName = imgName;
+                        materialArr.push(material);
+                    }
+                    value1.material = materialArr;
+
+                    makeHand([value1.position.x, value1.position.y, value1.position.z]);
+                    // makeTarget([value1.position.x, value1.position.y, value1.position.z]);
+                    // makeDownload([value1.position.x, value1.position.y + 40, value1.position.z]);
+                }
+            });
+            return fn(arr, totalArr);
+        });
+    }
+
+    // 保存选中图片
+    let targetImg;
+    function makeTarget(position) {
+        if (!targetImg) {
+            targetImg = new THREE.TextureLoader().load("img/circle.png")
+        }
+        let material = new THREE.SpriteMaterial({
+            map: targetImg,
+            color: 0xffffff,
+            transparent: true,
+            opacity: 1
+        });
+        let sprite = new THREE.Sprite(material);
+        sprite.position.x = position[0];
+        sprite.position.y = position[1];
+        sprite.position.z = position[2];
+        sprite.scale.x = 60;
+        sprite.scale.y = 60;
+        sprite.changeOpacity = "reduce";
+
+        scene.add(sprite);
+
+        opacityMove(sprite)
+    }
+    // 图片闪烁
+    function opacityMove(cube) {
+        if (cube.changeOpacity === "reduce") {
+            cube.material.opacity -= 0.02;
+            if (cube.material.opacity <= 0.4) {
+                cube.changeOpacity = "add";
+            }
+        } else if (cube.changeOpacity === "add") {
+            cube.material.opacity += 0.02;
+            if (cube.material.opacity >= 1) {
+                cube.changeOpacity = "reduce";
+            }
+        }
+        window.requestAnimationFrame(function () {
+            opacityMove(cube)
+        })
+    }
+
+    // 绘制一个svg图标【小手】在节点上方缓动提示
+    function makeHand(position) {
+        let controls = {
+            depth: 1,
+            bevelThickness: 1,
+            bevelSize: 1,
+            bevelSegments: 3,
+            bevelEnabled: true,
+            curveSegments: 5,
+            steps: 1
+        };
+        let shape = new THREE.ExtrudeGeometry(drawHand(), controls);
+
+        let position2 = [position[0] + 20, position[1] + 55, position[2]];
+
+        var material = new THREE.MeshBasicMaterial({color: 0xdddddd});
+        var mesh = new THREE.Mesh(shape, material);
+        mesh.rotation.z = Math.PI;
+        mesh.scale.x = 0.04;
+        mesh.scale.y = 0.04;
+        mesh.scale.z = 0.03;
+        mesh.position.set(position2[0], position2[1], position2[2]);
+        scene.add(mesh);
+
+        handMove(mesh, position2, true)
+    }
+    // 小手缓动
+    function handMove(sprite, position, flag) {
+        let tween = new TWEEN.Tween(sprite.position);
+
+        if (flag) {
+            tween.to({x: position[0], y: position[1] + 15, z: position[2]}, 1500)
+                .onComplete(function () {
+                    handMove(sprite, position, !flag)
+                }).start()
+        } else {
+            tween.to({x: position[0], y: position[1], z: position[2]}, 1500)
+                .onComplete(function () {
+                    handMove(sprite, position, !flag)
+                }).start()
+        }
+
+    }
+    // 绘制小手
+    function drawHand() {
+        let svgString = "M881.152 545.168c-27.664-27.632-68.352-30.112-96.016-2.48l-79.072 79.008c-20.56 20.56-45.36 20.592-59.84 3.52-9.584-11.312-5.776-46.24-3.12-68.352l39.648-325.872c3.568-29.088-17.168-57.248-46.336-60.784-29.12-3.52-55.584 18.848-59.136 47.968l-43.696 255.952c-2.336 6.352-7.184 7.456-7.744-1.088l-14.88-332.704c0-29.312-23.792-53.088-53.104-53.088-29.36 0-53.152 23.776-53.152 53.088l-1.024 335.152c0.272 3.872-3.056 4.992-3.664 0.56l-47.264-261.6c-5.184-28.88-32.848-49.68-61.68-44.464-28.896 5.184-48.064 34.464-42.88 63.328l42.112 306.144c0.032 5.472-1.76 8.56-4.352 1.6l-62.816-167.856c-9.808-27.632-40.16-43.728-67.84-33.92-27.632 9.824-42.08 41.84-32.256 69.472l110.048 359.568c0.576 2 1.2 3.952 1.792 5.92l0.24 0.736c0.048 0.064 0.048 0.096 0.08 0.16 30.464 93.808 118.64 161.664 222.672 161.664 66.56 0 135.744-23.472 188.384-63.872l0 0c56.88-34.224 239.056-230.096 239.056-230.096C912.944 615.168 908.816 572.832 881.152 545.168L881.152 545.168M881.152 545.168 881.152 545.168z";
+        return transformSVGPathExposed(svgString);
+    }
+
+    function makeDownload(position) {
+        let controls = {
+            depth: 1,
+            bevelThickness: 1,
+            bevelSize: 1,
+            bevelSegments: 3,
+            bevelEnabled: true,
+            curveSegments: 5,
+            steps: 1
+        };
+        let shape = new THREE.ExtrudeGeometry(drawShape1(), controls);
+
+        var material = new THREE.MeshBasicMaterial({color: 0xff00ff});
+        var mesh = new THREE.Mesh(shape, material);
+        mesh.rotation.z = Math.PI;
+
+        mesh.position.set(position[0] + 25, position[1] + 25, position[2]);
+        mesh.scale.x = 0.05;
+        mesh.scale.y = 0.05;
+        mesh.scale.z = 0.001;
+        scene.add(mesh);
+
+        spriteMove(mesh, position)
+    }
+    function spriteMove(sprite, position) {
+        let tween = new TWEEN.Tween(sprite.position);
+
+        tween.to({x: position[0] + 25, y: position[1] - 20, z: position[2]}, 2000)
+            .onComplete(function () {
+                sprite.position.x = position[0] + 25;
+                sprite.position.y = position[1] + 25;
+                sprite.position.z = position[2];
+                spriteMove(sprite, position)
+            }).start()
+    }
+    // 绘制一个向下的图标
+    function drawShape1() {
+        let svgString = "M840.289 627.335L544.253 923.2c-18.75 18.75-49.196 18.75-67.946 0L180.443 627.163c-26.662-26.662-4.473-73.278 30.446-73.278h146.728V133.483c0-25.974 20.986-47.132 47.132-47.132h211.234c25.974 0 47.131 20.986 47.131 47.132v420.574h147.072c35.607 0 55.905 47.304 30.103 73.278z";
+        return transformSVGPathExposed(svgString);
+    }
+
+    // 让第一根线下面的所有节点和线都变颜色
+    let k1 = scene.children.filter(function (value) {
+        return value.type === "Line";
+    });
+    let k2 = scene.children.filter(function (value) {
+        return value.type === "Mesh" || value.type === "Line";
+    });
+    let ARR = [k1[0]];
+    window.setTimeout(() => {
+        fn(ARR, k2);
+    }, 2000);
+
+
+    // 执行动画
+    function animate() {
+        if (scene.scale.x < 1) {
+            scene.scale.x += 0.01;
+            scene.scale.y += 0.01;
+            scene.scale.z += 0.01;
+            scene.rotation.y += 0.01;
+        }
+        controls.update();
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+        TWEEN.update();
+    }
+    animate();
+
+    document.getElementById("container").append(renderer.domElement);
+
+    // 传入攻击点和目标点的对象
+    function getPathByID(attackEvent) {
+        let commonParentID = getCommonParentID(attackEvent);
+        let sourcePath = getSourcePath(commonParentID, attackEvent.source);
+        let targetPath = getTargetPath(commonParentID, attackEvent.target);
+
+        //将两个路径和相同的父级节点ID连接起来，组成一个完整的路径
+        return sourcePath.concat(commonParentID).concat(targetPath);
+    }
+
+    // 找到攻击点和目标点相同的父级ID
+    function getCommonParentID(attackEvent) {
+        if (!attackEvent) return;
+        let commonParentID = [];
+        let source = attackEvent.source.split("-");
+        let target = attackEvent.target.split("-");
+        for (let i = 0, len = source.length; i < len; i++) {
+            if (source[i] === target[i]) commonParentID.push(source[i]);
+            else break;
+        }
+        return commonParentID.join("-");
+    }
+
+    // 得到攻击点到相同的父级ID的路径
+    function getSourcePath(commonParentID, source) {
+        let path = [];
+        let sourceArr = source.split("-");
+        let commonParentIDArr = commonParentID.split("-");
+        //下面for循环是从攻击点开始一步一步往上查找，
+        //直到相同的父级ID前一个节点ID
+        for (let i = 0, len = sourceArr.length - commonParentIDArr.length; i < len; i++) {
+            path.push(sourceArr.join("-"));
+            sourceArr.pop();
+        }
+        return path;
+    }
+
+    // 得到相同的父级ID到目标点的路径
+    function getTargetPath(commonParentID, target) {
+        let path = [];
+        let targetArr = target.split("-");
+        let commonParentIDArr = commonParentID.split("-");
+        //下面for循环是从目标点开始一步一步往上查找，
+        //直到相同的父级ID前一个节点ID，只是数组放入顺序和上面相反
+        for (let i = 0, len = targetArr.length - commonParentIDArr.length; i < len; i++) {
+            path.unshift(targetArr.join("-"));
+            targetArr.pop();
+        }
+        return path;
+    }
+
+    document.getElementById("btn").onclick = function () {
+        createAttackPoint(getPathByID(attackEvent));
+    };
+
+</script>
