@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/three.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/Tween.js"></script>
+    <script src="js/create3DBar.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .bar3D {
+            width: 100%;
+            border: 1px solid rgba(0,0,0,0);
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+        }
+        .Bar3dDesc {
+            position: absolute;
+            background: #7d7d7d57;
+            color: white;
+            padding: 0 15px;
+            line-height: 30px;
+        }
+        button {
+            width: 100px;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            margin-left: -50px;
+            background: #0c7b7b;
+            border: 0;
+            color: #fff;
+            padding: 10px;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+<div class="bar3D" id="departmentRanking" style="cursor: default;"></div>
+<button id="btn">点击</button>
+</body>
+</html>
+<script>
+    let Bar3D = null;
+    let data = [{name: "测试1", value: 18, id: "1"},
+        {name: "测试2", value: 2, id: "2"},
+        {name: "测试3", value: 1, id: "3"},
+        {name: "测试4", value: 1, id: "4"}];
+    let data2 = [{name: "测试4", value: 30, id: "4"},
+        {name: "测试5", value: 22, id: "5"},
+        {name: "测试1", value: 19, id: "1"},
+        {name: "测试3", value: 11, id: "3"},
+        {name: "测试2", value: 2, id: "2"}];
+
+
+    Bar3D = new CreateBar("departmentRanking", data);
+
+    document.getElementById("btn").addEventListener("click", function () {
+        Bar3D.update(data2);
+    })
+</script>
