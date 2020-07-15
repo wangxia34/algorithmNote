@@ -452,8 +452,8 @@ class SATable {
         }
         
         data.filterCheck || (data.filterCheck = []);
-        DTable.filterData(data.filterCheck, data.filterKey, data.data, true)
-        // DTable.initScroll(data.data)
+        // DTable.filterData(data.filterCheck, data.filterKey, data.data, true)
+        DTable.initScroll(data.data)
     }
     
     

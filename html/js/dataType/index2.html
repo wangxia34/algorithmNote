@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据结构分析</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    /*  队列
+        1. Queue和Stack有一些类似，不同的是Stack是先进后出，而Queue是先进先出
+        2. 方法
+            enqueue：入列，向队列尾部增加一个元素
+            dequeue：出列，移除队列头部的一个元素并返回被移除的元素
+            front：获取队列的第一个元素
+            isEmpty：判断队列是否为空
+            size：获取队列中元素的个数
+    */
+    function Queue() {
+        var collection = [];
+
+        this.enqueue = function (element) {
+            collection.push(element);
+        }
+
+        this.dequeue = function () {
+            return collection.shift();
+        }
+
+        this.front = function () {
+            return collection[0];
+        }
+
+        this.isEmpty = function () {
+            return collection.length === 0;
+        }
+
+        this.size = function () {
+            return collection.length;
+        }
+    }
+
+    /*  栈
+        1. Stack的特点是后进先出（last in first out）
+        2. 方法
+            push：将一个元素推入栈顶
+            pop：移除栈顶元素，并返回被移除的元素
+            peek：返回栈顶元素
+            length：返回栈中元素的个数
+        3. array模拟
+    */
+    function Stack() {
+        this.count = 0;
+        this.storage = {};
+
+        this.push = function (value) {
+            this.storage[this.count] = value;
+            this.count++;
+        }
+
+        this.pop = function () {
+            if (this.count === 0) {
+                return undefined;
+            }
+            this.count--;
+            var result = this.storage[this.count];
+            delete this.storage[this.count];
+            return result;
+        }
+
+        this.peek = function () {
+            return this.storage[this.count - 1];
+        }
+
+        this.size = function () {
+            return this.count;
+        }
+    }
+
+    /*  链表  [单向链表， 双向链表， 循环链表]
+        0. 链表是一种链式数据结构，链上的每个节点包含两种信息：节点本身的数据和指向下一个节点的指针。
+        1. 链表通常用在插入和删除比较多的场景，比如记账软件和代办事项等。
+        2. 常用方法
+            size：返回链表中节点的个数
+            head：返回链表中的头部元素
+            add：向链表尾部增加一个节点
+            remove：删除某个节点
+            indexOf：返回某个节点的index
+            elementAt：返回某个index处的节点
+            addAt：在某个index处插入一个节点
+            removeAt：删除某个index处的节点
+
+    */
+    // 一个简单的单向链表在js中的表现形式
+    var head = {
+        'val': 1,
+        'next': {
+            'val': 2,
+            'next': {
+                'val': 3,
+                'next': {
+                    'val': 4,
+                    'next': {
+                        'val': 5,
+                        'next': null
+                    }
+                }
+            }
+        }
+    };
+
+    // 构造简单的链表
+    function Node(element) {
+        // 节点中的数据
+        this.element = element;
+        // 指向下一个节点的指针
+        this.next = null;
+    }
+
+    function LinkedList() {
+        var length = 0;
+        var head = null;
+
+        this.size = function () {
+            return length;
+        }
+
+        this.head = function () {
+            return head;
+        }
+
+        this.add = function (element) {
+            var node = new Node(element);
+            if (head == null) {
+                head = node;
+            } else {
+                var currentNode = head;
+
+
+                while (currentNode.next) {
+                    currentNode = currentNode.next;
+                }
+
+
+                currentNode.next = node;
+            }
+            length++;
+        }
+
+        this.remove = function (element) {
+            var currentNode = head;
+            var previousNode;
+            if (currentNode.element === element) {
+                head = currentNode.next;
+            } else {
+                while (currentNode.element !== element) {
+                    previousNode = currentNode;
+                    currentNode = currentNode.next;
+                }
+                previousNode.next = currentNode.next;
+            }
+            length--;
+        }
+
+        this.isEmpty = function () {
+            return length === 0;
+        }
+
+        this.indexOf = function (element) {
+            var currentNode = head;
+            var index = -1;
+            while (currentNode) {
+                index++;
+                if (currentNode.element === element) {
+                    return index;
+                }
+                currentNode = currentNode.next;
+            }
+
+
+            return -1;
+        }
+
+        this.elementAt = function (index) {
+            var currentNode = head;
+            var count = 0;
+            while (count < index) {
+                count++;
+                currentNode = currentNode.next;
+            }
+            return currentNode.element;
+        }
+
+        this.addAt = function (index, element) {
+            var node = new Node(element);
+            var currentNode = head;
+            var previousNode;
+            var currentIndex = 0;
+
+
+            if (index > length) {
+                return false;
+            }
+
+
+            if (index === 0) {
+                node.next = currentNode;
+                head = node;
+            } else {
+                while (currentIndex < index) {
+                    currentIndex++;
+                    previousNode = currentNode;
+                    currentNode = currentNode.next;
+                }
+                node.next = currentNode;
+                previousNode.next = node;
+            }
+            length++;
+        }
+
+        this.removeAt = function (index) {
+            var currentNode = head;
+            var previousNode;
+            var currentIndex = 0;
+            if (index < 0 || index >= length) {
+                return null;
+            }
+            if (index === 0) {
+                head = currentIndex.next;
+            } else {
+                while (currentIndex < index) {
+                    currentIndex++;
+                    previousNode = currentNode;
+                    currentNode = currentNode.next;
+                }
+                previousNode.next = currentNode.next;
+            }
+            length--;
+            return currentNode.element;
+        }
+    }
+
+    
+    /*  Set（集合）
+        1. 集合是数学中的一个基本概念，表示具有某种特性的对象汇总成的集体。
+                在ES6中也引入了集合类型Set，Set和Array有一定程度的相似，不同的是Set中不允许出现重复的元素而且是无序的。
+        2. 方法
+            values：返回集合中的所有元素                    --------------         values()
+            size：返回集合中元素的个数                      --------------         size
+            has：判断集合中是否存在某个元素                 --------------          has()
+            add：向集合中添加元素                           --------------         add()
+            remove：从集合中移除某个元素                    --------------         delete()
+            union：返回两个集合的并集                       --------------         new Set([...a, ...b])
+            intersection：返回两个集合的交集                --------------         new Set([...a].filter(v => b.has(v)))
+            difference：返回两个集合的差集                  --------------         new Set([...a].filter(v => !b.has(v)))
+            subset：判断一个集合是否为另一个集合的子集       --------------         
+
+        ES6   size：返回个数
+              delete()：删除值，返回布尔值
+              add()：添加值，返回实例
+              has()：检查值，返回布尔值
+              clear()：清除所有成员
+              keys()：返回以属性值为遍历器的对象
+              values()：返回以属性值为遍历器的对象
+              entries()：返回以属性值和属性值为遍历器的对象
+              forEach()：使用回调函数遍历每个成员
+
+    */
+
+    
+    /*  Hash Table（哈希表/散列表）
+        1. Hash Table是一种用于存储键值对（key value pair）的数据结构，
+                因为Hash Table根据key查询value的速度很快，所以它常用于实现Map、Dictinary、Object等数据结构
+        
+    */
+
+    /*  树    ---   二叉树
+        1. 
+            Root（根）：代表树的根节点，根节点没有父节点
+            Parent Node（父节点）：一个节点的直接上级节点，只有一个
+            Child Node（子节点）：一个节点的直接下级节点，可能有多个
+            Siblings（兄弟节点）：具有相同父节点的节点
+            Leaf（叶节点）：没有子节点的节点
+            Edge（边）：两个节点之间的连接线
+            Path（路径）：从源节点到目标节点的连续边
+            Height of Node（节点的高度）：表示节点与叶节点之间的最长路径上边的个数
+            Height of Tree（树的高度）：即根节点的高度
+            Depth of Node（节点的深度）：表示从根节点到该节点的边的个数
+            Degree of Node（节点的度）：表示子节点的个数
+        2. 二叉树 每个节点最多只存在left和right两个子节点
+    */
+   
+</script>

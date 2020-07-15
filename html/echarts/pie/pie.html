@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图例自适应</title>
+    <script src="../echarts.min.js"></script>
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+        }
+        #mydemo {
+            width: 50%;
+            height: 50%;
+            background: black;
+            /*color: white;*/
+        }
+    </style>
+</head>
+<body>
+<div id="mydemo"></div>
+</body>
+</html>
+
+<script>
+
+    // 数据示例
+    let demoDom = document.getElementById("mydemo");
+    let name = "服务端口分布统计";
+    let data = [
+        {"name": "http(80)", "value": 134},
+        {"name": "smtp(25)", "value": 101},
+        {"name": "microsoft-ds(445)", "value": 76},
+        {"name": "imap(143)", "value": 54},
+        {"name": "ftp(21)", "value": 53},
+        {"name": "pop3(110)", "value": 50},
+        {"name": "https(443)", "value": 44},
+        {"name": "webcache(8080)", "value": 44},
+        {"name": "ssh(22)", "value": 29},
+        {"name": "mysql(3306)", "value": 24}
+    ];
+
+    // 基本参数
+    let options = {
+        color: [
+            "#C23531",
+            '#ce8c52',
+            '#c7c257',
+            '#3dbfbb',
+            '#779980',
+            '#5898b2',
+            '#47a770',
+            '#c4cbb6',
+            '#9ed7c2',
+            '#D3886E',
+            '#6793AA',
+            '#C3A266'],
+        tooltip: {
+            trigger: 'item',
+            position: null,
+            textStyle: {
+                fontSize: 10
+            },
+            confine: true
+        },
+        toolbox: {show: false},
+        calculable: true,
+        series: [{
+            name: name,
+            type: "pie",
+            radius: ['40%', '55%'],
+            center: ['30%', '50%'],
+            data: data,
+            label: {
+                normal: {
+                    show: false,
+                    position: "center"
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontWeight: "bold"
+                    }
+                }
+            },
+            avoidLabelOverlap: false,
+        }]
+    };
+
+    // 设置富文本样式
+    function setLegendRich() {
+        let len = 0;
+        for (let i = 0; i < data.length; i++) {
+            let length = data[i].name.length;
+            let strNum = data[i].name.replace(/[\u4e00-\u9fa5\u0f00-\u0fff]/g, "").length / 2;
+            if (length - strNum > len) {
+                len = length - parseInt(strNum)
+            }
+        }
+        let yWidth = demoDom.offsetWidth;
+        // console.log(yWidth);
+        options.legend = {
+            type: 'scroll',
+            orient: 'vertical',
+            icon: "circle",
+            top: 10,
+            bottom: 2,
+            textStyle: {
+                color: "#fff",
+                rich: {
+                    name: {
+                        width: ((len + 2) * 12) > (demoDom.offsetWidth * 0.4 - 48) ? (demoDom.offsetWidth * 0.4 - 48) : ((len + 2) * 12)
+                    }
+                }
+            },
+            formatter: function (name) {
+                let num;
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].name === name) {
+                        num = data[i].value;
+                        break
+                    }
+                }
+
+                let width = (demoDom.offsetWidth * 0.4 / 12) * 2 - 10;
+
+                let value = name + "", nameNum = 0;
+                for (let i = 0; i < value.length; i++) {
+                    /[\u4e00-\u9fa5\u0f00-\u0fff]/.test(value[i]) ? nameNum += 2 : nameNum += 1;
+                    if (nameNum > width) {
+                        value = value.slice(0, i - 1) + "…";
+                        break;
+                    }
+                }
+
+                return '{name|' + value + '：}' + num
+            }
+        };
+
+        if (yWidth > 500) {
+            options.legend.left = "60%"
+        } else {
+            options.legend.right = 10
+        }
+    }
+
+    setLegendRich();
+
+    // 渲染 echarts
+    let demo = echarts.init(demoDom);
+
+    demo.setOption(options);
+
+    window.addEventListener("resize", function () {
+        demo.resize();
+    })
+
+</script>

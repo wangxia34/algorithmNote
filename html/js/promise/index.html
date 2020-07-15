@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="promise.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // new Promise(1);
+
+
+    // console.log('1')
+    // new Promise1((resolve, reject) => {
+    //     setTimeout(() => {
+    //         console.log("setTimeout1");
+    //         resolve(1)
+    //     });
+    //     // throw new Error("!!!!!!!!!!!");
+    //     // resolve(1)
+    //     console.log('2')
+    // }).then(value => {
+    //     console.log('4')
+    //     console.log('value',value)
+    // },reason => {
+    //     console.log('reason',reason)
+    // });
+    // console.log('3')
+
+
+    // new Promise1((resolve, reject) => {
+    //     // throw new Error('You write wrong')
+    //     // console.log('2')
+    //     resolve(1)
+    // }).then(
+    //     value => {
+    //         throw new Error('use');
+    //         return 'good' + value
+    //     },
+    //     reason => {
+    //         console.log('reason', reason)
+    //     }
+    // ).then(
+    //     value => {
+    //         console.log('value', value)
+    //     },
+    //     reason => {
+    //         console.log('reason', reason)
+    //     }
+    // )
+
+
+    // new Promise1((resolve, reject) => {
+    //     // throw new Error('You write wrong')
+    //     // console.log('2')
+    //     resolve(1)
+    // }).then(
+    //     value => {
+    //         return new Promise1((resolve) => {
+    //             resolve(1)
+    //         })
+    //     },
+    //     reason => {
+    //         console.log('reason', reason)
+    //     }
+    // ).then(
+    //     value => {
+    //         console.log('value', value)
+    //     },
+    //     reason => {
+    //         console.log('reason', reason)
+    //     }
+    // )
+
+    // let p1 = new Promise1((resolve) => {
+    //     resolve(1)
+    // });
+    // let p2 = p1.then(() => {
+    //     return p2
+    // })
+
+
+
+    // new Promise1((resolve, reject) => {
+    //     // throw new Error('You write wrong')
+    //     // console.log('2')
+    //     setTimeout(() => {
+    //         console.log("setTimeout1");
+    //         resolve(1)
+    //     });
+    //     resolve(1)
+    // }).then(
+    //     value => {
+    //         console.log("then 1 value:", value)
+    //         return new Promise1((resolve) => {
+    //             resolve(new Promise1((resolve, reject) => {
+    //                     resolve('333')
+    //                 })
+    //             )
+    //         })
+    //     },
+    //     reason => {
+    //         console.log('reason', reason)
+    //     }
+    // ).then(
+    //     value => {
+    //         console.log('then 2 value:', value)
+    //     },
+    //     reason => {
+    //         console.log('reason', reason)
+    //     }
+    // )
+
+    setTimeout(function () {
+        console.log(1);
+    }, 0);
+    new Promise1((resolve,reject) => {
+        resolve(2);
+        // reject(3)
+    }).then((value) => {
+        console.log(value)
+    });
+    // promise异步执行微任务,比正常执行的异步函数列队要早
+    console.log(4);
+
+</script>

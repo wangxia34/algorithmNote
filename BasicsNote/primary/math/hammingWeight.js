@@ -49,6 +49,6 @@ window.onload = function (ev) {
     }
     
     
-    console.log(hammingWeight(00000000000000000000000000000000));
-    console.log(hammingWeight(00000000000000000000000010011000));
+    // console.log(hammingWeight(00000000000000000000000000000000));
+    // console.log(hammingWeight(00000000000000000000000010011000));
 };

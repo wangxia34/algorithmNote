@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caeb184b-ea07-4d77-8736-1c777cf1918a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/demoNote/3DBar/img/createBarBottom.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/demoNote/3DBar/index.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/demoNote/3DBar/js/OrbitControls.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/demoNote/3DBar/js/Tween.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/demoNote/3DBar/js/create3DBar.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/demoNote/3DBar/js/three.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/html/echarts/echarts.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/html/echarts/pie/pie.html" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/BasicsNote/primary/math/hammingWeight.js" afterPath="$PROJECT_DIR$/BasicsNote/primary/math/hammingWeight.js" />
+      <change beforePath="$PROJECT_DIR$/demoNote/sa-table/js/SATable.js" afterPath="$PROJECT_DIR$/demoNote/sa-table/js/SATable.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,59 +20,102 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="3Dindex.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demoNote/topology/3Dindex.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="24" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demoNote/3DBar/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1045">
-              <caret line="60" column="42" lean-forward="false" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demoNote/topology/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="957">
-              <caret line="46" column="32" lean-forward="false" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create3DBar.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/demoNote/3DBar/js/create3DBar.js">
+      <file leaf-file-name="twoSum.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/twoSum.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-              <folding>
-                <element signature="n#!!block;n#getMaxValue#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#drawBottom#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#loadBottomImg#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#clearData#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#hasData#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#createAllBar#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#createOneBar#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#makeText#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#makeLabelCanvas#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#removeOneBar#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#getScale#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#getTextScale#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#animateOneBar#0;n#CreateBar#0" expanded="false" />
-                <element signature="n#!!block;n#pointMove#0;n#CreateBar#0" expanded="false" />
-              </folding>
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="countPrimes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BasicsNote/primary/math/countPrimes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fizzBuzz.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BasicsNote/primary/math/fizzBuzz.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hammingWeight.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BasicsNote/primary/math/hammingWeight.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1166">
+              <caret line="53" column="2" lean-forward="false" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="isPowerOfThree.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BasicsNote/primary/math/isPowerOfThree.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="romanToInt.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BasicsNote/primary/math/romanToInt.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="threeSum.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/arrayAndString/threeSum.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="threeSumClosest.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/arrayAndString/threeSumClosest.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="minPathSum.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/arrayAndString/minPathSum.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="maxArea.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/arrayAndString/maxArea.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,6 +154,9 @@
       <find>this.cube</find>
       <find>getEllipseOpints</find>
       <find>createBar3dDesc</find>
+      <find>createOneBar</find>
+      <find>1</find>
+      <find>initScroll</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -124,13 +168,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/BasicsNote/primary/string/strStr.js" />
-        <option value="$PROJECT_DIR$/cssNote/base/margin.html" />
-        <option value="$PROJECT_DIR$/cssNote/base/shape-outside.html" />
-        <option value="$PROJECT_DIR$/BasicsNote/primary/array/minSubArrayLen.js" />
-        <option value="$PROJECT_DIR$/cssNote/base/margin-collapsing.html" />
-        <option value="$PROJECT_DIR$/cssNote/base/clear-float.html" />
-        <option value="$PROJECT_DIR$/cssNote/base/flex.html" />
         <option value="$PROJECT_DIR$/cssNote/base/input.html" />
         <option value="$PROJECT_DIR$/cssNote/base/position.html" />
         <option value="$PROJECT_DIR$/cssNote/base/demo.html" />
@@ -165,7 +202,6 @@
         <option value="$PROJECT_DIR$/demoNote/sa-select/js/SASelect.js" />
         <option value="$PROJECT_DIR$/demoNote/sa-table/data/data1.json" />
         <option value="$PROJECT_DIR$/demoNote/sa-table/css/SAPanel.css" />
-        <option value="$PROJECT_DIR$/demoNote/sa-table/js/SATable.js" />
         <option value="$PROJECT_DIR$/demoNote/sa-select/css/SAPanel.css" />
         <option value="$PROJECT_DIR$/demoNote/sa-table/index.html" />
         <option value="$PROJECT_DIR$/demoNote/sa-select/index.html" />
@@ -175,6 +211,14 @@
         <option value="$PROJECT_DIR$/demoNote/topology/3Dindex.html" />
         <option value="$PROJECT_DIR$/demoNote/3DBar/index.html" />
         <option value="$PROJECT_DIR$/demoNote/3DBar/js/create3DBar.js" />
+        <option value="$PROJECT_DIR$/demoNote/kanbanniang/index.html" />
+        <option value="$PROJECT_DIR$/demoNote/kanbanniang/live2d/demo.html" />
+        <option value="$PROJECT_DIR$/demoNote/live2d/demo.html" />
+        <option value="$PROJECT_DIR$/demoNote/live2d/assets/waifu-tips.js" />
+        <option value="$PROJECT_DIR$/html/echarts/pie.html" />
+        <option value="$PROJECT_DIR$/html/echarts/pie/pie.html" />
+        <option value="$PROJECT_DIR$/demoNote/sa-table/js/SATable.js" />
+        <option value="$PROJECT_DIR$/BasicsNote/primary/math/hammingWeight.js" />
       </list>
     </option>
   </component>
@@ -190,11 +234,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="20" />
-    <option name="y" value="20" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="393" />
+    <option name="y" value="15" />
     <option name="width" value="1400" />
-    <option name="height" value="820" />
+    <option name="height" value="991" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -211,7 +255,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,38 +265,52 @@
             <path>
               <item name="Note" type="b2602c69:ProjectViewProjectNode" />
               <item name="Note" type="462c0819:PsiDirectoryNode" />
-              <item name="demoNote" type="462c0819:PsiDirectoryNode" />
+              <item name="BasicsNote" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Note" type="b2602c69:ProjectViewProjectNode" />
               <item name="Note" type="462c0819:PsiDirectoryNode" />
-              <item name="demoNote" type="462c0819:PsiDirectoryNode" />
-              <item name="3DBar" type="462c0819:PsiDirectoryNode" />
+              <item name="BasicsNote" type="462c0819:PsiDirectoryNode" />
+              <item name="difficult" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Note" type="b2602c69:ProjectViewProjectNode" />
               <item name="Note" type="462c0819:PsiDirectoryNode" />
-              <item name="demoNote" type="462c0819:PsiDirectoryNode" />
-              <item name="3DBar" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="BasicsNote" type="462c0819:PsiDirectoryNode" />
+              <item name="intermediate" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Note" type="b2602c69:ProjectViewProjectNode" />
               <item name="Note" type="462c0819:PsiDirectoryNode" />
-              <item name="demoNote" type="462c0819:PsiDirectoryNode" />
-              <item name="topology" type="462c0819:PsiDirectoryNode" />
+              <item name="BasicsNote" type="462c0819:PsiDirectoryNode" />
+              <item name="intermediate" type="462c0819:PsiDirectoryNode" />
+              <item name="arrayAndString" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Note" type="b2602c69:ProjectViewProjectNode" />
               <item name="Note" type="462c0819:PsiDirectoryNode" />
-              <item name="demoNote" type="462c0819:PsiDirectoryNode" />
-              <item name="topology" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="BasicsNote" type="462c0819:PsiDirectoryNode" />
+              <item name="intermediate" type="462c0819:PsiDirectoryNode" />
+              <item name="math" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Note" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Note" type="462c0819:PsiDirectoryNode" />
+              <item name="BasicsNote" type="462c0819:PsiDirectoryNode" />
+              <item name="primary" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Note" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Note" type="462c0819:PsiDirectoryNode" />
+              <item name="BasicsNote" type="462c0819:PsiDirectoryNode" />
+              <item name="primary" type="462c0819:PsiDirectoryNode" />
+              <item name="array" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -262,25 +319,25 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/风控项目/7yue" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\GitMy\Note\demoNote\3DBar\img" />
-      <recent name="E:\GitMy\Note\demoNote\3DBar\js" />
-      <recent name="E:\GitMy\Note\demoNote\topology\img" />
-      <recent name="E:\GitMy\Note\demoNote\topology\js" />
-      <recent name="E:\GitMy\Note\demoNote\js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\GitMy\Note\html\echarts\pie" />
       <recent name="E:\GitMy\Note\BasicsNote\intermediate\math" />
       <recent name="E:\GitMy\Note\BasicsNote\intermediate\arrayAndString" />
       <recent name="E:\GitMy\Note\html\jsDemo\jsCanvas\js" />
       <recent name="E:\GitMy\Note\html\jsDemo\jsCanvas\css" />
-      <recent name="E:\GitMy\Note\BasicsNote\difficult\dynamicProgramming" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\GitMy\Note\html\echarts" />
+      <recent name="E:\GitMy\Note\demoNote\3DBar\img" />
+      <recent name="E:\GitMy\Note\demoNote\3DBar\js" />
+      <recent name="E:\GitMy\Note\demoNote\topology\img" />
+      <recent name="E:\GitMy\Note\demoNote\topology\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -355,27 +412,39 @@
       <workItem from="1588145684115" duration="616000" />
       <workItem from="1588208812356" duration="15878000" />
       <workItem from="1588726531778" duration="1216000" />
-      <workItem from="1588744936961" duration="5092000" />
+      <workItem from="1588744936961" duration="9615000" />
+      <workItem from="1588917325396" duration="1894000" />
+      <workItem from="1589361531162" duration="1874000" />
+      <workItem from="1589437671059" duration="709000" />
+      <workItem from="1589773859584" duration="1597000" />
+      <workItem from="1589850008775" duration="638000" />
+      <workItem from="1589874062755" duration="4311000" />
+      <workItem from="1589937628413" duration="3332000" />
+      <workItem from="1590111223518" duration="1805000" />
+      <workItem from="1592192999715" duration="903000" />
+      <workItem from="1594189414193" duration="1046000" />
+      <workItem from="1594257161643" duration="1206000" />
+      <workItem from="1594343161417" duration="1204000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248964000" />
+    <option name="totallyTimeSpent" value="274006000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1691254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07218124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -398,225 +467,112 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/arrayAndString/fourSum.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="32" column="67" lean-forward="false" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/arrayAndString/threeSumClosest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2442">
-          <caret line="111" column="4" lean-forward="false" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/math/intToRoman.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="133" column="36" lean-forward="false" selection-start-line="133" selection-start-column="36" selection-end-line="133" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/css/demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/css/margin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="27" column="9" lean-forward="false" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/css/flex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="9" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/jsDemo/jsCanvas/访问代码笔记.url">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/string/myAtoi.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/jsDemo/jsColor/colorpicker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cssA/font-awesome/HELP-US-OUT.txt">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/string/partition.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/cssA/按钮/main.css" />
-    <entry file="file://$PROJECT_DIR$/html/cssA/font-awesome/css/font-awesome.min.css">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/string/reverse.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/cssA/font-awesome/css/font-awesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2464">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cssA/border/demo1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="36" column="22" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cssA/文字动画/demo1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cssA/按钮/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9130">
-          <caret line="440" column="20" lean-forward="false" selection-start-line="440" selection-start-column="20" selection-end-line="440" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cssA/文字动画/demo2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="34" column="22" lean-forward="false" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cssA/导航交互/demo1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="968">
-          <caret line="44" column="21" lean-forward="false" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/cssA/雪花/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66594">
-          <caret line="3027" column="37" lean-forward="false" selection-start-line="3027" selection-start-column="12" selection-end-line="3027" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/jsDemo/jsCss/index.html">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/string/reverseString.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/css/clear-float.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="14" lean-forward="false" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/techniqueNote/demo.html">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/string/reverseWords.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/jsDemo/jsColor/访问代码笔记.url">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/string/reverseWords1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/jsDemo/jsColor/index.html">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/string/strStr.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/techniqueNote/count/random.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-413">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/sa-table/data/data1.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="0" column="5476941" lean-forward="false" selection-start-line="0" selection-start-column="5476941" selection-end-line="0" selection-end-column="5476941" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/sa-table/js/SATable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="559" column="0" lean-forward="false" selection-start-line="586" selection-start-column="0" selection-end-line="587" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/sa-table/css/SAPanel.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21670">
-          <caret line="985" column="0" lean-forward="false" selection-start-line="985" selection-start-column="0" selection-end-line="1033" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/sa-select/css/SAPanel.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/sa-select/js/SASelect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="59" column="4" lean-forward="false" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/js/jquery-3.1.0.min.js">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/string/Trie.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/sa-table/index.html">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/string/wordBreak.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="53" lean-forward="false" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/sa-select/index.html">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/string/wordBreak2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/css/shape-outside.html">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/tree/isSymmetric.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/tree/isValidBST.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/tree/levelOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/tree/maxDepth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/tree/sortedArrayToBST.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/echarts/echarts.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -625,42 +581,180 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html/js/demo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/jsDemo/jsCanvas/css/style.css">
+    <entry file="file://$PROJECT_DIR$/html/echarts/pie/pie.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2970">
+          <caret line="135" column="52" lean-forward="false" selection-start-line="135" selection-start-column="52" selection-end-line="135" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demoNote/sa-table/data/data1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-908549">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demoNote/sa-table/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4422">
+          <caret line="201" column="13" lean-forward="false" selection-start-line="201" selection-start-column="13" selection-end-line="201" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demoNote/sa-table/js/SATable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="547" column="33" lean-forward="false" selection-start-line="547" selection-start-column="33" selection-end-line="547" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/arrayPairSum.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/topology/js/go.js">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/containsDuplicate.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/topology/index.js" />
-    <entry file="file://$PROJECT_DIR$/html/jsDemo/jsCanvas/index.html">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/dominantIndex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/topology/js/icons.js">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/findDiagonalOrder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="24" selection-end-column="2" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/topology/demo1.html" />
-    <entry file="file://$PROJECT_DIR$/demoNote/topology/js/three.min.js">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/findMaxConsecutiveOnes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/generate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/getRow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/intersect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/isValidSudoku.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1029">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/majorityElement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/maxProfit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/minSubArrayLen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/missingNumber.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/moveZeroes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/pivotIndex.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/plusOne.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/removeDuplicates.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/removeElement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/searchMatrix.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/singleNumber.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/array/twoSum.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -668,7 +762,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/topology/js/OrbitControls.js">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/math/countPrimes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -676,17 +770,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/topology/js/d3-threeD.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#d3threeD#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/topology/js/Tween.js">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/math/isPowerOfThree.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -694,7 +778,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/3DBar/js/three.min.js">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/math/romanToInt.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -702,7 +786,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/3DBar/js/OrbitControls.js">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/arrayAndString/minPathSum.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -710,7 +794,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/3DBar/js/Tween.js">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/arrayAndString/maxArea.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -718,52 +802,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/topology/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="957">
-          <caret line="46" column="32" lean-forward="false" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/topology/3Dindex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="24" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/3DBar/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1045">
-          <caret line="60" column="42" lean-forward="false" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demoNote/3DBar/js/create3DBar.js">
+    <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/arrayAndString/threeSum.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!block;n#getMaxValue#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#drawBottom#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#loadBottomImg#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#clearData#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#hasData#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#createAllBar#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#createOneBar#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#makeText#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#makeLabelCanvas#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#removeOneBar#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#getScale#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#getTextScale#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#animateOneBar#0;n#CreateBar#0" expanded="false" />
-            <element signature="n#!!block;n#pointMove#0;n#CreateBar#0" expanded="false" />
-          </folding>
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/math/hammingWeight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1166">
+          <caret line="53" column="2" lean-forward="false" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/primary/math/fizzBuzz.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicsNote/intermediate/arrayAndString/threeSumClosest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
