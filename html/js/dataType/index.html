@@ -11,16 +11,7 @@
 </html>
 <script>
 
-    typeof "John"                 // 返回 string
-    typeof 3.14                   // 返回 number
-    typeof NaN                    // 返回 number
-    typeof false                  // 返回 boolean
-    typeof [1,2,3,4]              // 返回 object
-    typeof {name:'John', age:34}  // 返回 object
-    typeof new Date()             // 返回 object
-    typeof function () {}         // 返回 function
-    typeof myCar                  // 返回 undefined (如果 myCar 没有声明)
-    typeof null                   // 返回 object
+    
 
     /******************************* 基本数据类型 **********************************/
     /*  string 
@@ -143,7 +134,8 @@
     console.log(Symbol.keyFor(symbol1)); // 'name'
     console.log(Symbol.keyFor(symbol2)); // 'name'
 
-    // 引用数据类型
+    
+    /******************************* 引用数据类型 **********************************/
     /*  object  
         1. 在JavaScript中，几乎所有的对象都是Object类型的实例，它们都会从Objet.prototype继承属性和方法。
         2. Object.assign() 通过复制一个或多个对象来创建一个新的对象。
@@ -235,6 +227,81 @@
         5. WeakMap  和Map结构类似，成员键只能是对象
     */
 
+
+
     
+    /******************************* 数据类型的判断 **********************************/
+    /*  typeof
+        1. typeof 对于原始类型来说，除了 null 都可以显示正确的类型
+        2. typeof 对于对象来说，除了函数都会显示 object，所以说 typeof 并不能准确判断变量到底是什么类型,所以想判断一个对象的正确类型，这时候可以考虑使用 instanceof
+    */
+    typeof "John"                 // 返回 string
+    typeof 3.14                   // 返回 number
+    typeof NaN                    // 返回 number
+    typeof false                  // 返回 boolean
+    typeof [1,2,3,4]              // 返回 object
+    typeof {name:'John', age:34}  // 返回 object
+    typeof new Date()             // 返回 object
+    typeof function () {}         // 返回 function
+    typeof myCar                  // 返回 undefined (如果 myCar 没有声明)
+    typeof null                   // 返回 object
+    typeof new Set()              // 返回 object
+    typeof Symbol("name")         // 返回 symbol
+
+
+    /*  instanceof
+        1. instanceof 可以正确的判断对象的类型，因为内部机制是通过判断对象的 原型链 中是不是能找到类型的 prototype。
+        2. instanceof 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。其意思就是判断对象是否是某一数据类型（如Array）的实例，
+                      请重点关注一下是判断一个对象是否是数据类型的实例。在这里字面量值，2， true ，'str'不是实例，所以判断值为false。
+    */
+    console.log(2 instanceof Number);                    // false
+    console.log(new Number(2) instanceof Number);        // true
+    console.log(true instanceof Boolean);                // false 
+    console.log(new Boolean(true) instanceof Boolean);   // true
+    console.log('str' instanceof String);                // false  
+    console.log([] instanceof Array);                    // true
+    console.log(function(){} instanceof Function);       // true
+    console.log({} instanceof Object);                   // true    
+    // console.log(undefined instanceof Undefined);      // Uncaught ReferenceError
+    // console.log(null instanceof Null);                // Uncaught ReferenceError
+
+
+    /*  constructor
+        1. 如果创建一个对象，更改它的原型，constructor就会变得不可靠了
+    */
+    console.log((2).constructor === Number);                // true
+    console.log((true).constructor === Boolean);            // true
+    console.log(('str').constructor === String);            // true
+    console.log(([]).constructor === Array);                // true
+    console.log((function() {}).constructor === Function);  // true
+    console.log(({}).constructor === Object);               // true
+
+    // 不可靠举例
+    function Fn(){};
+    Fn.prototype=new Array();
+    var f=new Fn();
+    console.log(f.constructor===Fn);    // false
+    console.log(f.constructor===Array); // true 
+
+
+    /*  Object.prototype.toString.call()
+        1. 使用 Object 对象的原型方法 toString ，使用 call 进行狸猫换太子，借用 Object的 toString 方法
+    */
+    var a = Object.prototype.toString;
+ 
+    console.log(a.call(2));             // [object Number]
+    console.log(a.call(true));          // [object Boolean]
+    console.log(a.call('str'));         // [object String]
+    console.log(a.call([]));            // [object Array]
+    console.log(a.call(function(){}));  // [object Function]
+    console.log(a.call({}));            // [object Object]
+    console.log(a.call(undefined));     // [object Undefined]
+    console.log(a.call(null));          // [object Null]
+    console.log(a.call(Symbol("name")));// [object Symbol]
+    console.log(a.call(new Set()));     // [object Set]
+    console.log(a.call(new Map()));     // [object Map]
+    console.log(a.call(new Date()));    // [object Date]
+    
+
 
 </script>

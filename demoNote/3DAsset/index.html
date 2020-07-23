@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/three.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/Tween.js"></script>
+    <script src="js/create3DAsset.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .asset3D {
+            width: 100%;
+            border: 1px solid rgba(0,0,0,0);
+            height: 100%;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+        }
+        .asset3dDesc {
+            position: absolute;
+            background: #7d7d7d57;
+            color: white;
+            padding: 0 15px;
+            line-height: 30px;
+        }
+        button {
+            width: 100px;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            margin-left: -50px;
+            background: #0c7b7b;
+            border: 0;
+            color: #fff;
+            padding: 10px;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="asset3D" id="asset3D" style="cursor: default;"></div>
+    <button id="btn">点击</button>
+</body>
+</html>
+<script>
+    var Asset3D = null;
+    var data1 = {
+        department: 1,
+        other: 0,
+        service: 1,
+        terminal: 0,
+    };
+    var data2 = {
+        department: 4,
+        other: 2,
+        service: 5,
+        terminal: 3,
+    };
+
+    function update(data) {
+        if (Asset3D) {
+            Asset3D.update(data);
+        } else {
+            Asset3D = new Create3DAsset("asset3D", data);
+        }        
+    }
+
+    update(data1);
+
+    setTimeout(() => {
+        update(data2)
+    }, 3000)
+
+</script>
